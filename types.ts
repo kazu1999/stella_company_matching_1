@@ -1,0 +1,36 @@
+export interface Company {
+  id: string;
+  name: string;
+  industry: string;
+  logo: string;
+  matchScore: number;
+  description: string;
+}
+
+export interface Offer {
+  id: string;
+  companyName: string;
+  logo: string;
+  position: string;
+  status: 'Pending' | 'Accepted' | 'Rejected';
+}
+
+export interface Article {
+  id: string;
+  category: string;
+  title: string;
+  date: string;
+  thumbnail: string;
+}
+
+export enum RoutePath {
+  Dashboard = '/',
+  CompanyProfile = '/profile',
+  ArticleGenerator = '/article-generator',
+  Matching = '/matching',
+  CompanyDetail = '/company/:id',
+  CompanyList = '/companies',
+  Chat = '/chat',
+  Ranking = '/ranking',
+  Articles = '/articles',
+}
