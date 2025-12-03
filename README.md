@@ -1,7 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # Stella Matching Service
 
 企業マッチングと求人管理のためのWebアプリケーションです。AIを活用した企業マッチング、記事生成、チャット機能などを提供します。
