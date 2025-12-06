@@ -59,7 +59,7 @@ const Sidebar: React.FC = () => {
             </Link>
             <Link to={RoutePath.Matching} class={navItemClass(RoutePath.Matching)}>
               <span class={iconClass(RoutePath.Matching)}>auto_awesome</span>
-              <p class="text-sm font-medium leading-normal">マッチング (AI)</p>
+              <p class="text-sm font-medium leading-normal">マッチング (AI)（オリジナル）</p>
             </Link>
              <Link to={RoutePath.CompanyList} class={navItemClass(RoutePath.CompanyList)}>
               <span class={iconClass(RoutePath.CompanyList)}>apartment</span>
@@ -81,10 +81,18 @@ const Sidebar: React.FC = () => {
               <span class={iconClass(RoutePath.ArticleGenerator)}>edit_document</span>
               <p class="text-sm font-medium leading-normal">記事生成</p>
             </Link>
+            <Link to={RoutePath.CompanyAnalysis} class={navItemClass(RoutePath.CompanyAnalysis)}>
+              <span class={iconClass(RoutePath.CompanyAnalysis)}>psychology</span>
+              <p class="text-sm font-medium leading-normal">AI分析・マッチング</p>
+            </Link>
           </nav>
         </div>
         
         <div class="flex flex-col gap-1 border-t border-border-light dark:border-border-dark pt-4">
+             <Link to={RoutePath.CompanyRegistration} class={navItemClass(RoutePath.CompanyRegistration)}>
+              <span class={iconClass(RoutePath.CompanyRegistration)}>add_business</span>
+              <p class="text-sm font-medium leading-normal">自社登録</p>
+            </Link>
              <Link to={RoutePath.CompanyProfile} class={navItemClass(RoutePath.CompanyProfile)}>
               <span class={iconClass(RoutePath.CompanyProfile)}>business_center</span>
               <p class="text-sm font-medium leading-normal">プロフィール</p>

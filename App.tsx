@@ -13,6 +13,8 @@ import Chat from './pages/Chat';
 import Ranking from './pages/Ranking';
 import Articles from './pages/Articles';
 import Companies from './pages/Companies';
+import CompanyRegistration from './pages/CompanyRegistration';
+import CompanyAnalysis from './pages/CompanyAnalysis';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminCompanies from './pages/admin/AdminCompanies';
 import AdminCompanyDetail from './pages/admin/AdminCompanyDetail';
@@ -125,6 +127,8 @@ const App: React.FC = () => {
                   <Routes>
                     <Route path={RoutePath.Dashboard} element={<Dashboard />} />
                     <Route path={RoutePath.CompanyProfile} element={<CompanyProfile />} />
+                    <Route path={RoutePath.CompanyRegistration} element={<CompanyRegistration />} />
+                    <Route path={RoutePath.CompanyAnalysis} element={<CompanyAnalysis />} />
                     <Route path={RoutePath.ArticleGenerator} element={<ArticleGenerator />} />
                     <Route path={RoutePath.Matching} element={<Matching />} />
                     <Route path={RoutePath.CompanyDetail} element={<CompanyDetail />} />

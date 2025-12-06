@@ -28,6 +28,8 @@ export enum RoutePath {
   SignUp = '/signup',
   Dashboard = '/',
   CompanyProfile = '/profile',
+  CompanyRegistration = '/company-registration',
+  CompanyAnalysis = '/company-analysis',
   ArticleGenerator = '/article-generator',
   Matching = '/matching',
   CompanyDetail = '/company/:id',
