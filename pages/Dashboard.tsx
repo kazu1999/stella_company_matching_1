@@ -217,6 +217,239 @@ const Dashboard: React.FC = () => {
             </div>
           </section>
         </div>
+        
+        {/* カテゴリー別おすすめセクション */}
+        <section>
+          <div className="mb-4 flex items-center gap-2">
+            <h2 className="text-text-light dark:text-text-dark text-lg font-semibold leading-tight tracking-[-0.015em]">
+              カテゴリー別おすすめ
+            </h2>
+            <span className="material-symbols-outlined text-primary text-xl">auto_awesome</span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 財務 */}
+            <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-4">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <span className="material-symbols-outlined text-primary">account_balance</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-text-light dark:text-text-dark">財務</h3>
+                </div>
+                <a className="text-sm font-medium text-primary hover:underline" href="#">
+                  すべて表示
+                </a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社マネーフォワード</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">SaaS型会計ソフトのリーダー</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">95%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">freee株式会社</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">クラウド会計ソフトのパイオニア</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">91%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* 営業 */}
+            <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-4">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <span className="material-symbols-outlined text-primary">trending_up</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-text-light dark:text-text-dark">営業</h3>
+                </div>
+                <a className="text-sm font-medium text-primary hover:underline" href="#">
+                  すべて表示
+                </a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">Sansan株式会社</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">名刺管理から営業DXを推進</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">93%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社セールスフォース・ジャパン</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">CRM/SFAのグローバルリーダー</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">89%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* 採用・人材紹介 */}
+            <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-4">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <span className="material-symbols-outlined text-primary">groups</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-text-light dark:text-text-dark">採用・人材紹介</h3>
+                </div>
+                <a className="text-sm font-medium text-primary hover:underline" href="#">
+                  すべて表示
+                </a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">ビジョナル株式会社</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">HR Techのリーディングカンパニー</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">96%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社リクルート</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">人材領域の総合サービスを展開</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">90%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* DX */}
+            <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-4">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <span className="material-symbols-outlined text-primary">devices</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-text-light dark:text-text-dark">DX</h3>
+                </div>
+                <a className="text-sm font-medium text-primary hover:underline" href="#">
+                  すべて表示
+                </a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社ユーザベース</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">経済情報でDXを支援</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">88%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社LayerX</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">バクラクで経理DXを推進</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">85%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* マーケ */}
+            <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-4">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <span className="material-symbols-outlined text-primary">campaign</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-text-light dark:text-text-dark">マーケ</h3>
+                </div>
+                <a className="text-sm font-medium text-primary hover:underline" href="#">
+                  すべて表示
+                </a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社サイバーエージェント</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">デジタルマーケティングの国内最大手</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">94%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社プレイド</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">CXプラットフォーム「KARTE」を提供</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">87%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* 組織 */}
+            <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-4">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+                    <span className="material-symbols-outlined text-primary">corporate_fare</span>
+                  </div>
+                  <h3 className="text-base font-semibold text-text-light dark:text-text-dark">組織</h3>
+                </div>
+                <a className="text-sm font-medium text-primary hover:underline" href="#">
+                  すべて表示
+                </a>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社SmartHR</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">クラウド人事労務ソフトのシェアNo.1</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">92%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+                <a className="flex items-center gap-4 rounded-lg p-3 -mx-3 hover:bg-gray-50 dark:hover:bg-white/5 cursor-pointer">
+                  <div className="flex-1">
+                    <p className="font-semibold text-text-light dark:text-text-dark">株式会社リンクアンドモチベーション</p>
+                    <p className="text-sm text-subtext-light dark:text-subtext-dark">組織コンサルティングのパイオニア</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-primary">86%</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
