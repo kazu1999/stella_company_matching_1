@@ -14,22 +14,22 @@ const Articles: React.FC = () => {
     <div className="flex-1 p-8 overflow-y-auto h-full">
       <div className="max-w-7xl mx-auto">
         <header className="flex flex-wrap justify-between items-center gap-4 mb-6">
-          <h1 className="text-4xl font-black text-text-light dark:text-white">Article Content</h1>
+          <h1 className="text-4xl font-black text-text-light dark:text-white">記事コンテンツ</h1>
           <button className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-bold shadow-lg hover:bg-primary/90">
-             <span className="material-symbols-outlined">auto_awesome</span> Generate with AI
+             <span className="material-symbols-outlined">auto_awesome</span> AIで生成
           </button>
         </header>
 
         <div className="flex flex-col md:flex-row justify-between gap-4 mb-8">
            <div className="flex gap-2 flex-wrap">
-              <button className="px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm">All</button>
-              <button className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-subtext-light dark:text-gray-400 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700">DX Promotion</button>
-              <button className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-subtext-light dark:text-gray-400 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700">New Business</button>
-              <button className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-subtext-light dark:text-gray-400 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700">Marketing</button>
+              <button className="px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm">すべて</button>
+              <button className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-subtext-light dark:text-gray-400 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700">DX推進</button>
+              <button className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-subtext-light dark:text-gray-400 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700">新規事業</button>
+              <button className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-subtext-light dark:text-gray-400 font-medium text-sm hover:bg-gray-200 dark:hover:bg-gray-700">マーケティング</button>
            </div>
            <div className="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
-              <button className="px-4 py-1.5 bg-white dark:bg-background-dark shadow-sm rounded-md text-sm font-medium text-text-light dark:text-white">Newest</button>
-              <button className="px-4 py-1.5 text-sm font-medium text-subtext-light dark:text-gray-400">Popular</button>
+              <button className="px-4 py-1.5 bg-white dark:bg-background-dark shadow-sm rounded-md text-sm font-medium text-text-light dark:text-white">新着</button>
+              <button className="px-4 py-1.5 text-sm font-medium text-subtext-light dark:text-gray-400">人気</button>
            </div>
         </div>
 

@@ -24,11 +24,11 @@ const Ranking: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col gap-8">
         <header className="flex flex-wrap justify-between items-center gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-text-light dark:text-white">Company Ranking</h1>
-            <p className="text-subtext-light dark:text-subtext-dark mt-1">Evaluation based on Cultive Score and engagement metrics.</p>
+            <h1 className="text-3xl font-bold text-text-light dark:text-white">企業ランキング</h1>
+            <p className="text-subtext-light dark:text-subtext-dark mt-1">Cultive Scoreとエンゲージメント指標に基づく評価です。</p>
           </div>
           <button className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-border-light dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-white">
-             <span className="material-symbols-outlined">calendar_today</span> Filter by Period
+             <span className="material-symbols-outlined">calendar_today</span> 期間でフィルター
           </button>
         </header>
 
@@ -38,11 +38,11 @@ const Ranking: React.FC = () => {
                 <table className="w-full">
                    <thead className="bg-gray-50 dark:bg-white/5">
                       <tr>
-                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase">Rank</th>
-                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase">Company Name</th>
+                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase">順位</th>
+                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase">企業名</th>
                          <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase">Cultive Score</th>
-                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase hidden sm:table-cell">Likes</th>
-                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase hidden md:table-cell">Views</th>
+                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase hidden sm:table-cell">いいね</th>
+                         <th className="px-6 py-4 text-left text-xs font-medium text-subtext-light dark:text-subtext-dark uppercase hidden md:table-cell">閲覧数</th>
                       </tr>
                    </thead>
                    <tbody className="divide-y divide-border-light dark:divide-gray-800">
@@ -75,16 +75,16 @@ const Ranking: React.FC = () => {
                         <span className="material-symbols-outlined text-3xl">military_tech</span>
                     </div>
                     <div>
-                        <h2 className="text-lg font-bold text-text-light dark:text-white">About Cultive Score</h2>
-                        <p className="text-sm text-subtext-light dark:text-subtext-dark">Scores company activities to improve matching accuracy. Updated in real-time.</p>
+                        <h2 className="text-lg font-bold text-text-light dark:text-white">Cultive Scoreについて</h2>
+                        <p className="text-sm text-subtext-light dark:text-subtext-dark">企業の活動をスコア化し、マッチング精度を向上させます。リアルタイムで更新されます。</p>
                     </div>
                  </div>
                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {[
-                        { label: "Likes", val: "+5" },
-                        { label: "Offers", val: "+10" },
-                        { label: "Info Update", val: "+5" },
-                        { label: "Articles", val: "+10" }
+                        { label: "いいね", val: "+5" },
+                        { label: "オファー", val: "+10" },
+                        { label: "情報更新", val: "+5" },
+                        { label: "記事", val: "+10" }
                     ].map((s, i) => (
                         <div key={i} className="bg-gray-50 dark:bg-white/5 rounded-lg p-3 text-center">
                             <p className="text-sm font-medium text-text-light dark:text-white">{s.label}</p>
@@ -97,7 +97,7 @@ const Ranking: React.FC = () => {
           
           <div className="lg:col-span-1">
              <div className="sticky top-8 bg-white dark:bg-background-dark border border-border-light dark:border-gray-800 rounded-xl p-6">
-                 <h3 className="font-semibold text-text-light dark:text-white mb-1">Score Trend</h3>
+                 <h3 className="font-semibold text-text-light dark:text-white mb-1">スコア推移</h3>
                  <p className="text-sm text-subtext-light dark:text-subtext-dark mb-4">Innovatech Solutions</p>
                  <div className="h-48 w-full">
                     <ResponsiveContainer width="100%" height="100%">
@@ -111,7 +111,7 @@ const Ranking: React.FC = () => {
                     </ResponsiveContainer>
                  </div>
                  <div className="flex items-center justify-center gap-2 mt-4">
-                    <span className="text-sm text-subtext-light dark:text-subtext-dark">Real-time Update</span>
+                    <span className="text-sm text-subtext-light dark:text-subtext-dark">リアルタイム更新</span>
                     <span className="text-green-500 font-bold flex items-center text-sm"><span className="material-symbols-outlined text-sm">arrow_upward</span> 5.2%</span>
                  </div>
              </div>

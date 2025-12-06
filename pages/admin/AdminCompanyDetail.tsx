@@ -228,7 +228,30 @@ const AdminCompanyDetail: React.FC = () => {
                   </p>
                 </div>
                 <div className="flex-grow p-6 overflow-y-auto space-y-6">
+                  {/* 企業側のメッセージ（左側） */}
                   <div className="flex items-start gap-3">
+                    <div
+                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 flex-shrink-0"
+                      style={{
+                        backgroundImage:
+                          'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfGPUnI6CWn0-aDcAifWFb3ZhvBjvyasotWQmrokF8qfBfPD78btVXQBikkM2aQreEwX-i5TRv7jKAABBEzrWBgSsBRyVJIcrtsmpgHD4ZhmSMJ3dmzFtSSXRUIC5wzdodhB7wMWH-YBrfd6qpgTVfbqxj3ysxV5vL_2zZ5hwlV8x3XV81BUC-c2PeaBeOP75xM1kMjijJ7K6Eab81iRKfXkH2hOFCFP665Lj_KqT65RShGCpwIMj1IKZfCdMWXItjl9nGhcwRx7s")',
+                      }}
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-2 mb-1">
+                        <p className="font-bold text-text-light dark:text-white">田中 太郎</p>
+                        <p className="text-xs text-subtext-light dark:text-subtext-dark">2023-10-27 09:15</p>
+                      </div>
+                      <div className="bg-background-light dark:bg-background-dark p-3 rounded-lg rounded-tl-none">
+                        <p className="text-sm text-text-light dark:text-white">
+                          初めまして。株式会社イノベートの田中と申します。よろしくお願いいたします。
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 管理者のメッセージ（右側） */}
+                  <div className="flex items-start gap-3 flex-row-reverse">
                     <div
                       className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 flex-shrink-0"
                       style={{
@@ -237,13 +260,57 @@ const AdminCompanyDetail: React.FC = () => {
                       }}
                     />
                     <div className="flex-1">
-                      <div className="flex items-baseline gap-2 mb-1">
+                      <div className="flex items-baseline gap-2 mb-1 justify-end">
                         <p className="font-bold text-text-light dark:text-white">管理者</p>
                         <p className="text-xs text-subtext-light dark:text-subtext-dark">2023-10-27 10:30</p>
                       </div>
+                      <div className="bg-primary p-3 rounded-lg rounded-tr-none">
+                        <p className="text-sm text-white">
+                          田中様、お世話になっております。Stella Matching Serviceの管理者です。ご登録いただいた内容について、いくつか確認させていただきたい点がございます。
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 企業側の返信（左側） */}
+                  <div className="flex items-start gap-3">
+                    <div
+                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 flex-shrink-0"
+                      style={{
+                        backgroundImage:
+                          'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfGPUnI6CWn0-aDcAifWFb3ZhvBjvyasotWQmrokF8qfBfPD78btVXQBikkM2aQreEwX-i5TRv7jKAABBEzrWBgSsBRyVJIcrtsmpgHD4ZhmSMJ3dmzFtSSXRUIC5wzdodhB7wMWH-YBrfd6qpgTVfbqxj3ysxV5vL_2zZ5hwlV8x3XV81BUC-c2PeaBeOP75xM1kMjijJ7K6Eab81iRKfXkH2hOFCFP665Lj_KqT65RShGCpwIMj1IKZfCdMWXItjl9nGhcwRx7s")',
+                      }}
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-2 mb-1">
+                        <p className="font-bold text-text-light dark:text-white">田中 太郎</p>
+                        <p className="text-xs text-subtext-light dark:text-subtext-dark">2023-10-27 11:15</p>
+                      </div>
                       <div className="bg-background-light dark:bg-background-dark p-3 rounded-lg rounded-tl-none">
                         <p className="text-sm text-text-light dark:text-white">
-                          田中様、お世話になっております。Stella Matching Serviceの管理者です。ご登録いただいた内容について、いくつか確認させていただきたい点がございます。
+                          ご連絡ありがとうございます。株式会社イノベートの田中です。どのような点でしょうか？
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 管理者の返信（右側） */}
+                  <div className="flex items-start gap-3 flex-row-reverse">
+                    <div
+                      className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 flex-shrink-0"
+                      style={{
+                        backgroundImage:
+                          'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBPbw4PiwaxMLRgZ30kyavIIBW7V7xsWQRpRJIA3yxRJAeMB89vCSedSN45Sf9wxgEpN6bcUmnnl9KeQpr66WWaa9A23PzkjT_Q2crw40pqeEq2QrjfHBXv9nXZ7zBn2WTTTDJ8FDktz5_p9FS9hs62y7-9SWBtxeT4UvrsG7nyvfgt-a1_yddLf6VhdoiDyDm_lUh9Pn_RO3mgsu2LMMbfk91Jqbrzy0aEmaYpecBedfySlsjvsrBBd6_3h-Ah2e5jh_kSrO7v7QA")',
+                      }}
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-2 mb-1 justify-end">
+                        <p className="font-bold text-text-light dark:text-white">管理者</p>
+                        <p className="text-xs text-subtext-light dark:text-subtext-dark">2023-10-27 11:20</p>
+                      </div>
+                      <div className="bg-primary p-3 rounded-lg rounded-tr-none">
+                        <p className="text-sm text-white">
+                          「解決したい課題」について、より具体的な目標（例：リード数を月50件増やすなど）を記載いただけますと、AIによるマッチング精度がさらに向上します。もし可能でしたら、追記いただけますと幸いです。
                         </p>
                       </div>
                     </div>

@@ -51,7 +51,7 @@ const Matching: React.FC = () => {
     <div className="flex-1 p-8 overflow-y-auto h-full">
       <div className="mx-auto max-w-7xl">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-text-light dark:text-white text-2xl font-bold tracking-tight">AI Recommended Companies</h2>
+          <h2 className="text-text-light dark:text-white text-2xl font-bold tracking-tight">AI推奨企業</h2>
           <div className="flex items-center gap-2">
             <button className="flex size-9 items-center justify-center rounded-full border border-border-light dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <span className="material-symbols-outlined text-lg">arrow_back</span>
@@ -74,19 +74,19 @@ const Matching: React.FC = () => {
               </Link>
               
               <div className="flex flex-col gap-3 rounded-lg p-3 bg-gradient-to-tr from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30">
-                <p className="text-xs font-semibold text-blue-800 dark:text-blue-200 mb-1">AI Recommendation Reason</p>
+                <p className="text-xs font-semibold text-blue-800 dark:text-blue-200 mb-1">AI推奨理由</p>
                 <div className="space-y-1 text-xs text-blue-600 dark:text-blue-300">
-                    <div className="flex justify-between"><span>Issue Match:</span><span className="font-semibold">{company.reason.issueMatch}</span></div>
-                    <div className="flex justify-between"><span>Knowhow:</span><span className="font-semibold">{company.reason.knowhow}</span></div>
-                    <div className="flex justify-between"><span>Financial Score:</span><span className="font-semibold">{company.reason.financial}</span></div>
+                    <div className="flex justify-between"><span>課題マッチ:</span><span className="font-semibold">{company.reason.issueMatch}</span></div>
+                    <div className="flex justify-between"><span>ノウハウ:</span><span className="font-semibold">{company.reason.knowhow}</span></div>
+                    <div className="flex justify-between"><span>財務スコア:</span><span className="font-semibold">{company.reason.financial}</span></div>
                 </div>
                 <p className="text-xs text-blue-600 dark:text-blue-300 mt-2 pt-2 border-t border-blue-200 dark:border-blue-800/30">
-                  <span className="font-semibold">Synergy:</span> {company.synergy}
+                  <span className="font-semibold">シナジー:</span> {company.synergy}
                 </p>
               </div>
 
               <div className="flex flex-col gap-2">
-                <p className="text-text-light dark:text-white text-sm font-medium">Strengths & Common Points:</p>
+                <p className="text-text-light dark:text-white text-sm font-medium">強み・共通点:</p>
                 <ul className="space-y-2 text-sm text-subtext-light dark:text-subtext-dark">
                     {company.strengths.map((s, i) => (
                         <li key={i} className="flex items-center gap-2">
@@ -106,13 +106,13 @@ const Matching: React.FC = () => {
                         </svg>
                         <span className="absolute text-sm font-semibold text-text-light dark:text-white">{company.score}%</span>
                     </div>
-                    <p className="text-xs text-subtext-light dark:text-subtext-dark mt-1">Similarity</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark mt-1">類似度</p>
                  </div>
                  <div className="flex items-center gap-2">
                     <button className="flex size-10 items-center justify-center rounded-lg border border-border-light dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 text-subtext-light dark:text-gray-400">
                         <span className="material-symbols-outlined">favorite</span>
                     </button>
-                    <button className="flex h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-white hover:bg-primary/90">Send Offer</button>
+                    <button className="flex h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-white hover:bg-primary/90">オファー送信</button>
                  </div>
               </div>
             </div>

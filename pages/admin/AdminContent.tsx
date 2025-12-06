@@ -7,32 +7,32 @@ const AdminContent: React.FC = () => {
   const articles = [
     {
       id: 1,
-      title: 'The Future of B2B Marketing Automation',
-      status: 'Published',
+      title: 'B2Bマーケティング自動化の未来',
+      status: '公開済み',
       statusColor: 'green',
       creationDate: '2023-10-26',
       lastUpdated: '2023-10-27',
     },
     {
       id: 2,
-      title: 'Leveraging AI for Lead Generation',
-      status: 'Draft',
+      title: 'AIを活用したリード獲得戦略',
+      status: '下書き',
       statusColor: 'orange',
       creationDate: '2023-10-25',
       lastUpdated: '2023-10-26',
     },
     {
       id: 3,
-      title: 'Top 5 SaaS Trends in 2024',
-      status: 'Unpublished',
+      title: '2024年のSaaSトレンドトップ5',
+      status: '非公開',
       statusColor: 'gray',
       creationDate: '2023-10-24',
       lastUpdated: '2023-10-24',
     },
     {
       id: 4,
-      title: 'A Guide to Effective Customer Onboarding',
-      status: 'Published',
+      title: '効果的な顧客オンボーディングガイド',
+      status: '公開済み',
       statusColor: 'green',
       creationDate: '2023-10-22',
       lastUpdated: '2023-10-23',
@@ -59,15 +59,15 @@ const AdminContent: React.FC = () => {
         <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
           <div className="flex flex-col gap-1">
             <p className="text-text-light dark:text-white text-3xl font-bold leading-tight">
-              AI Article Management
+              AI記事管理
             </p>
             <p className="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal">
-              Manage, edit, and publish AI-generated articles.
+              AI生成記事の管理、編集、公開を行います。
             </p>
           </div>
           <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide shadow-sm hover:bg-primary/90">
             <span className="material-symbols-outlined text-xl">add_circle</span>
-            <span className="truncate">Create New Article</span>
+            <span className="truncate">新規記事作成</span>
           </button>
         </div>
 
@@ -80,7 +80,7 @@ const AdminContent: React.FC = () => {
               </div>
               <input
                 className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-text-light dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-border-light dark:border-border-dark bg-white dark:bg-gray-900/50 focus:border-primary/50 h-full placeholder:text-subtext-light dark:placeholder:text-subtext-dark px-4 border-l-0 text-base font-normal leading-normal"
-                placeholder="Search articles by title or keyword..."
+                placeholder="記事タイトルまたはキーワードで検索..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -100,7 +100,7 @@ const AdminContent: React.FC = () => {
                     : 'border-b-transparent text-subtext-light dark:text-subtext-dark hover:text-text-light dark:hover:text-white'
                 }`}
               >
-                <p className="text-sm font-bold leading-normal">Article List</p>
+                <p className="text-sm font-bold leading-normal">記事一覧</p>
               </button>
               <button
                 onClick={() => setActiveTab('report')}
@@ -110,7 +110,7 @@ const AdminContent: React.FC = () => {
                     : 'border-b-transparent text-subtext-light dark:text-subtext-dark hover:text-text-light dark:hover:text-white'
                 }`}
               >
-                <p className="text-sm font-bold leading-normal">Monthly Report Settings</p>
+                <p className="text-sm font-bold leading-normal">月次レポート設定</p>
               </button>
               <button
                 onClick={() => setActiveTab('seo')}
@@ -120,7 +120,7 @@ const AdminContent: React.FC = () => {
                     : 'border-b-transparent text-subtext-light dark:text-subtext-dark hover:text-text-light dark:hover:text-white'
                 }`}
               >
-                <p className="text-sm font-bold leading-normal">SEO Templates</p>
+                <p className="text-sm font-bold leading-normal">SEOテンプレート</p>
               </button>
             </div>
           </div>
@@ -133,19 +133,19 @@ const AdminContent: React.FC = () => {
                   <thead>
                     <tr className="border-b border-border-light dark:border-border-dark">
                       <th className="px-4 py-3 text-left text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider w-2/5">
-                        Article Title
+                        記事タイトル
                       </th>
                       <th className="px-4 py-3 text-left text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider w-1/5">
-                        Status
+                        ステータス
                       </th>
                       <th className="px-4 py-3 text-left text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider w-1/5">
-                        Creation Date
+                        作成日
                       </th>
                       <th className="px-4 py-3 text-left text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider w-1/5">
-                        Last Updated
+                        最終更新日
                       </th>
                       <th className="px-4 py-3 text-right text-subtext-light dark:text-subtext-dark text-xs font-medium uppercase tracking-wider">
-                        Actions
+                        アクション
                       </th>
                     </tr>
                   </thead>
@@ -194,13 +194,13 @@ const AdminContent: React.FC = () => {
 
           {activeTab === 'report' && (
             <div className="px-6 py-4">
-              <p className="text-subtext-light dark:text-subtext-dark">Monthly Report Settings</p>
+              <p className="text-subtext-light dark:text-subtext-dark">月次レポート設定</p>
             </div>
           )}
 
           {activeTab === 'seo' && (
             <div className="px-6 py-4">
-              <p className="text-subtext-light dark:text-subtext-dark">SEO Templates</p>
+              <p className="text-subtext-light dark:text-subtext-dark">SEOテンプレート</p>
             </div>
           )}
         </div>

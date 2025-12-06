@@ -7,52 +7,52 @@ const Dashboard: React.FC = () => {
         <header className="flex flex-wrap justify-between gap-3">
           <div className="flex min-w-72 flex-col gap-2">
             <h1 className="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em]">
-              Dashboard
+              ダッシュボード
             </h1>
             <p className="text-subtext-light dark:text-subtext-dark text-base font-normal leading-normal">
-              Welcome back, Tanaka-san
+              おかえりなさい、田中さん
             </p>
           </div>
         </header>
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="flex flex-col gap-2 rounded-xl p-6 border border-border-light dark:border-border-dark bg-white dark:bg-gray-800/50">
             <p className="text-subtext-light dark:text-subtext-dark text-base font-medium leading-normal">
-              Matches
+              マッチ数
             </p>
             <p className="text-text-light dark:text-text-dark tracking-tight text-3xl font-bold leading-tight">
               128
             </p>
             <p className="text-green-600 dark:text-green-400 text-sm font-medium leading-normal">
-              +5% vs last month
+              先月比+5%
             </p>
           </div>
           <div className="flex flex-col gap-2 rounded-xl p-6 border border-border-light dark:border-border-dark bg-white dark:bg-gray-800/50">
             <p className="text-subtext-light dark:text-subtext-dark text-base font-medium leading-normal">
-              Offers
+              オファー数
             </p>
             <p className="text-text-light dark:text-text-dark tracking-tight text-3xl font-bold leading-tight">
               16
             </p>
             <p className="text-green-600 dark:text-green-400 text-sm font-medium leading-normal">
-              +2% vs last month
+              先月比+2%
             </p>
           </div>
           <div className="flex flex-col gap-2 rounded-xl p-6 border border-border-light dark:border-border-dark bg-white dark:bg-gray-800/50">
             <p className="text-subtext-light dark:text-subtext-dark text-base font-medium leading-normal">
-              Articles Posted
+              記事投稿数
             </p>
             <p className="text-text-light dark:text-text-dark tracking-tight text-3xl font-bold leading-tight">
               5
             </p>
             <p className="text-red-500 dark:text-red-400 text-sm font-medium leading-normal">
-              -1% vs last month
+              先月比-1%
             </p>
           </div>
         </section>
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2 flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
             <h2 className="text-text-light dark:text-text-dark text-lg font-semibold leading-normal">
-              Notifications
+              お知らせ
             </h2>
             <div className="flex flex-col gap-4">
               <div className="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-gray-800">
@@ -61,13 +61,13 @@ const Dashboard: React.FC = () => {
                 </span>
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-text-light dark:text-text-dark">
-                    [Important] System Maintenance Notice
+                    [重要] システムメンテナンスのお知らせ
                   </p>
                   <p className="text-xs text-subtext-light dark:text-subtext-dark mt-1">
-                    October 26, 2023
+                    2023年10月26日
                   </p>
                   <p className="text-sm text-subtext-light dark:text-subtext-dark mt-2">
-                    System maintenance will be performed on the following dates. Service will be unavailable during this time.
+                    以下の日程でシステムメンテナンスを実施いたします。メンテナンス中はサービスをご利用いただけません。
                   </p>
                 </div>
               </div>
@@ -77,13 +77,13 @@ const Dashboard: React.FC = () => {
                 </span>
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-text-light dark:text-text-dark">
-                    New Feature "AI Recommendation" Released
+                    新機能「AI推奨」をリリースしました
                   </p>
                   <p className="text-xs text-subtext-light dark:text-subtext-dark mt-1">
-                    October 15, 2023
+                    2023年10月15日
                   </p>
                   <p className="text-sm text-subtext-light dark:text-subtext-dark mt-2">
-                    We have released a new feature where AI proposes optimal matching candidates based on your profile and activity history.
+                    プロフィールと活動履歴に基づいて、AIが最適なマッチング候補を提案する新機能をリリースしました。
                   </p>
                 </div>
               </div>
@@ -91,22 +91,22 @@ const Dashboard: React.FC = () => {
           </div>
           <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
             <h2 className="text-text-light dark:text-text-dark text-lg font-semibold leading-normal">
-              Contact Support
+              サポート連絡
             </h2>
             <p className="text-sm text-subtext-light dark:text-subtext-dark">
-              Send us your feedback, requests, or bug reports here.
+              フィードバック、ご要望、バグ報告はこちらからお送りください。
             </p>
             <div className="flex flex-col gap-4 mt-2">
               <textarea
                 className="w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-gray-700 text-sm placeholder:text-subtext-light dark:placeholder:text-subtext-dark focus:ring-primary focus:border-primary p-3"
-                placeholder="Enter your message..."
+                placeholder="メッセージを入力..."
                 rows={5}
               ></textarea>
               <button className="flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary/90">
                 <span className="material-symbols-outlined text-base">
                   send
                 </span>
-                <span>Send</span>
+                <span>送信</span>
               </button>
             </div>
           </div>
@@ -115,13 +115,13 @@ const Dashboard: React.FC = () => {
           <section className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
             <div className="flex justify-between items-center">
               <h2 className="text-text-light dark:text-text-dark text-lg font-semibold leading-tight tracking-[-0.015em]">
-                Recent Offers
+                最近のオファー
               </h2>
               <a
                 className="text-sm font-medium text-primary hover:underline"
                 href="#"
               >
-                View All
+                すべて表示
               </a>
             </div>
             <div className="flex flex-col">
@@ -129,13 +129,13 @@ const Dashboard: React.FC = () => {
                 <thead className="border-b border-border-light dark:border-border-dark">
                   <tr>
                     <th className="py-2 px-2 text-sm font-medium text-subtext-light dark:text-subtext-dark">
-                      Company
+                      企業
                     </th>
                     <th className="py-2 px-2 text-sm font-medium text-subtext-light dark:text-subtext-dark">
-                      Position
+                      職種
                     </th>
                     <th className="py-2 px-2 text-sm font-medium text-subtext-light dark:text-subtext-dark">
-                      Status
+                      ステータス
                     </th>
                   </tr>
                 </thead>
@@ -152,11 +152,11 @@ const Dashboard: React.FC = () => {
                       </span>
                     </td>
                     <td className="py-3 px-2 text-sm text-subtext-light dark:text-subtext-dark">
-                      Backend Engineer
+                      バックエンドエンジニア
                     </td>
                     <td className="py-3 px-2">
                       <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-yellow-800 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-300 rounded-full">
-                        Pending
+                        保留中
                       </span>
                     </td>
                   </tr>
@@ -172,11 +172,11 @@ const Dashboard: React.FC = () => {
                       </span>
                     </td>
                     <td className="py-3 px-2 text-sm text-subtext-light dark:text-subtext-dark">
-                      Product Designer
+                      プロダクトデザイナー
                     </td>
                     <td className="py-3 px-2">
                       <span className="inline-flex items-center px-2 py-1 text-xs font-medium text-green-800 bg-green-100 dark:bg-green-900 dark:text-green-300 rounded-full">
-                        Accepted
+                        承認済み
                       </span>
                     </td>
                   </tr>
@@ -187,7 +187,7 @@ const Dashboard: React.FC = () => {
           <section className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">
             <div className="flex items-center gap-2">
               <h2 className="text-text-light dark:text-text-dark text-lg font-semibold leading-tight tracking-[-0.015em]">
-                Recommended (AI)
+                AI推奨
               </h2>
               <span className="material-symbols-outlined text-primary text-xl">
                 auto_awesome
@@ -210,7 +210,7 @@ const Dashboard: React.FC = () => {
                   </div>
                   <div className="text-right">
                     <p className="font-bold text-primary">{c.match}</p>
-                    <p className="text-xs text-subtext-light dark:text-subtext-dark">Match</p>
+                    <p className="text-xs text-subtext-light dark:text-subtext-dark">マッチ</p>
                   </div>
                 </div>
               ))}

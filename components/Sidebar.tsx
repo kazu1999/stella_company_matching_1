@@ -48,38 +48,38 @@ const Sidebar: React.FC = () => {
                 Stella
               </h1>
               <p className="text-subtext-light dark:text-subtext-dark text-xs font-medium">
-                Premium Plan
+                プレミアムプラン
               </p>
             </div>
           </div>
           <nav class="flex flex-col gap-1">
             <Link to={RoutePath.Dashboard} class={navItemClass(RoutePath.Dashboard)}>
               <span class={iconClass(RoutePath.Dashboard)}>dashboard</span>
-              <p class="text-sm font-medium leading-normal">Dashboard</p>
+              <p class="text-sm font-medium leading-normal">ダッシュボード</p>
             </Link>
             <Link to={RoutePath.Matching} class={navItemClass(RoutePath.Matching)}>
               <span class={iconClass(RoutePath.Matching)}>auto_awesome</span>
-              <p class="text-sm font-medium leading-normal">Matching (AI)</p>
+              <p class="text-sm font-medium leading-normal">マッチング (AI)</p>
             </Link>
              <Link to={RoutePath.CompanyList} class={navItemClass(RoutePath.CompanyList)}>
               <span class={iconClass(RoutePath.CompanyList)}>apartment</span>
-              <p class="text-sm font-medium leading-normal">Companies</p>
+              <p class="text-sm font-medium leading-normal">企業一覧</p>
             </Link>
             <Link to={RoutePath.Articles} class={navItemClass(RoutePath.Articles)}>
               <span class={iconClass(RoutePath.Articles)}>article</span>
-              <p class="text-sm font-medium leading-normal">Articles (AI)</p>
+              <p class="text-sm font-medium leading-normal">記事 (AI)</p>
             </Link>
             <Link to={RoutePath.Chat} class={navItemClass(RoutePath.Chat)}>
               <span class={iconClass(RoutePath.Chat)}>chat</span>
-              <p class="text-sm font-medium leading-normal">Chat</p>
+              <p class="text-sm font-medium leading-normal">チャット</p>
             </Link>
             <Link to={RoutePath.Ranking} class={navItemClass(RoutePath.Ranking)}>
                <span class={iconClass(RoutePath.Ranking)}>monitoring</span>
-              <p class="text-sm font-medium leading-normal">Ranking</p>
+              <p class="text-sm font-medium leading-normal">ランキング</p>
             </Link>
             <Link to={RoutePath.ArticleGenerator} class={navItemClass(RoutePath.ArticleGenerator)}>
               <span class={iconClass(RoutePath.ArticleGenerator)}>edit_document</span>
-              <p class="text-sm font-medium leading-normal">Generator</p>
+              <p class="text-sm font-medium leading-normal">記事生成</p>
             </Link>
           </nav>
         </div>
@@ -87,18 +87,18 @@ const Sidebar: React.FC = () => {
         <div class="flex flex-col gap-1 border-t border-border-light dark:border-border-dark pt-4">
              <Link to={RoutePath.CompanyProfile} class={navItemClass(RoutePath.CompanyProfile)}>
               <span class={iconClass(RoutePath.CompanyProfile)}>business_center</span>
-              <p class="text-sm font-medium leading-normal">Profile</p>
+              <p class="text-sm font-medium leading-normal">プロフィール</p>
             </Link>
-             <Link to="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
-              <span class="material-symbols-outlined">settings</span>
-              <p class="text-sm font-medium leading-normal">Settings</p>
+             <Link to="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
+              <span className="material-symbols-outlined">settings</span>
+              <p className="text-sm font-medium leading-normal">設定</p>
             </Link>
              <button
               onClick={handleLogout}
               className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10 w-full text-left"
             >
               <span className="material-symbols-outlined">logout</span>
-              <p className="text-sm font-medium leading-normal">Logout</p>
+              <p className="text-sm font-medium leading-normal">ログアウト</p>
             </button>
         </div>
       </div>

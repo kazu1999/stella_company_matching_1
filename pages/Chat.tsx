@@ -25,7 +25,7 @@ const Chat: React.FC = () => {
   const [activeThreadId, setActiveThreadId] = useState<string>('nextgen');
   const [messageInput, setMessageInput] = useState('');
   const [offerForm, setOfferForm] = useState({
-    type: 'Business Alliance',
+    type: 'ビジネス提携',
     deadline: '',
     proposal: '',
   });
@@ -40,22 +40,22 @@ const Chat: React.FC = () => {
       companyLogo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADpc6gNapbe-GOouFbHLRcEDb7qz3JKbDNcREZRvknjxuqZyW4B1exFWqVRTieSWM-7xhhBNMfV_AO1MA2N6sn6aQvmS45vwe4YLjpaSnIXypH3cuDP53vWhsc4Qm4Z1KxQ6EYN8HidJEzcZKz7IvuvjaDCPtBF83wYq_mogQnTLbx2GQxoAD0clUcoEWLgvfnfpuSbXdlmGnBXQVH_B2zTcl1YsLzbLxp2NDhD4tRlo4R9mZryPKLdzPnXfVhKaKEKUnw8Ab8X-A',
       matchScore: 92,
       status: 'Pending',
-      lastMessage: "That sounds great! We're looking...",
-      lastMessageTime: '10:45 AM',
-      relatedIssue: 'New Customer Acquisition (AI)',
+      lastMessage: "素晴らしいですね！検討させていただきます...",
+      lastMessageTime: '10:45',
+      relatedIssue: '新規顧客獲得 (AI)',
       messages: [
         {
           id: '1',
-          text: "Hello! Thank you for reaching out. We've reviewed your proposal and are very interested in moving forward.",
+          text: "こんにちは！ご連絡ありがとうございます。ご提案を確認させていただき、前向きに検討させていただきたいと思います。",
           sender: 'company',
-          timestamp: '10:42 AM',
+          timestamp: '10:42',
           read: true,
         },
         {
           id: '2',
-          text: "That sounds great! We're looking forward to discussing the next steps. When would be a good time for a quick call?",
+          text: "ありがとうございます！次のステップについて話し合えるのを楽しみにしています。お電話での打ち合わせのご都合の良い時間はありますか？",
           sender: 'me',
-          timestamp: '10:45 AM',
+          timestamp: '10:45',
           read: true,
         },
       ],
@@ -66,22 +66,22 @@ const Chat: React.FC = () => {
       companyLogo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDFYRkMsN4JqZy-KS0CoFNDZL_VE_-hdP7MSuvOeL10wmmRwbvFtgvh-ELV-9wLe9sZBTcC8aIpuzsnFEHf-OAt_yEsJQ2YmD1Q736wfOLnMdbZ8DDIuy3APPsFjjX7SVf9WsdTQ9LEFqfk7VSkV7bXiu-ZBtmENpBj-4xF1AD44Bh9D32C2Rben1wF8vd9hNjpzJUkazijX9buGf8Qx7nYkC-kEe-PrI1XiiJfRnS0BqneVBUvXyVGGcf_tpkjDz_hff1cU_UFSCk',
       matchScore: 88,
       status: 'Accepted',
-      lastMessage: 'Please find the attached contract.',
-      lastMessageTime: 'Yesterday',
-      relatedIssue: 'Global Expansion',
+      lastMessage: '契約書を添付いたします。',
+      lastMessageTime: '昨日',
+      relatedIssue: 'グローバル展開',
       messages: [
         {
           id: '1',
-          text: 'Thank you for your interest. We would like to proceed with the partnership.',
+          text: 'ご興味をお持ちいただき、ありがとうございます。パートナーシップを進めさせていただきたいと思います。',
           sender: 'company',
-          timestamp: 'Yesterday 3:20 PM',
+          timestamp: '昨日 15:20',
           read: true,
         },
         {
           id: '2',
-          text: 'Please find the attached contract.',
+          text: '契約書を添付いたします。',
           sender: 'company',
-          timestamp: 'Yesterday 4:15 PM',
+          timestamp: '昨日 16:15',
           read: true,
         },
       ],
@@ -92,15 +92,15 @@ const Chat: React.FC = () => {
       companyLogo: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDC1IhKMbiEbpXwfTCVd7kKuSGyv0k7WTvtA678-XoMV7-c2JkkNxY66XDk8yuxMfa03TlFvXEZudcZEycnfK1tZ5wu5UoTAEgHEM_a5w0n8D65PdktX1wMvbSDPPx3KqKjtZ4ToFMgbmIPFwm6CpRm-Wq7tF_g3uFu01pN8tddAuAgIOFQqTLwN5lOosHDh3EhmgJM0d6CIU5ZEG_SMjmN9fpwVtdlTBVg87MscWMZJUpGyLHFxPpQdNOuvwyyrNbHzTKDU6OyCXk',
       matchScore: 85,
       status: 'Pending',
-      lastMessage: 'We are reviewing your proposal...',
-      lastMessageTime: '2 days ago',
-      relatedIssue: 'AI Integration',
+      lastMessage: 'ご提案を検討中です...',
+      lastMessageTime: '2日前',
+      relatedIssue: 'AI統合',
       messages: [
         {
           id: '1',
-          text: 'We received your proposal and are currently reviewing it. We will get back to you soon.',
+          text: 'ご提案をいただき、ありがとうございます。現在検討中です。すぐにご返信いたします。',
           sender: 'company',
-          timestamp: '2 days ago 11:30 AM',
+          timestamp: '2日前 11:30',
           read: true,
         },
       ],
@@ -118,7 +118,7 @@ const Chat: React.FC = () => {
       id: Date.now().toString(),
       text: messageInput,
       sender: 'me',
-      timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+      timestamp: new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' }),
       read: false,
     };
 
@@ -141,9 +141,9 @@ const Chat: React.FC = () => {
     setTimeout(() => {
       const autoReply: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'Thank you for your message. We will review it and get back to you soon.',
+        text: 'メッセージありがとうございます。確認して、すぐにご返信いたします。',
         sender: 'company',
-        timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+        timestamp: new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' }),
         read: false,
       };
 
@@ -166,7 +166,7 @@ const Chat: React.FC = () => {
   const handleSendOffer = (e: React.FormEvent) => {
     e.preventDefault();
     if (!offerForm.proposal.trim()) {
-      alert('Please enter a proposal');
+      alert('提案内容を入力してください');
       return;
     }
 
@@ -174,7 +174,7 @@ const Chat: React.FC = () => {
       id: Date.now().toString(),
       text: `[OFFER] Type: ${offerForm.type} | Deadline: ${offerForm.deadline || 'Not specified'} | Proposal: ${offerForm.proposal}`,
       sender: 'me',
-      timestamp: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+      timestamp: new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' }),
       read: false,
     };
 
@@ -192,9 +192,9 @@ const Chat: React.FC = () => {
       )
     );
 
-    setOfferForm({ type: 'Business Alliance', deadline: '', proposal: '' });
+    setOfferForm({ type: 'ビジネス提携', deadline: '', proposal: '' });
     setShowOfferForm(false);
-    alert('Offer sent successfully!');
+    alert('オファーを送信しました！');
   };
 
   // メッセージエリアの自動スクロール
@@ -216,14 +216,14 @@ const Chat: React.FC = () => {
       {/* Thread List */}
       <div className="w-full max-w-sm flex flex-col border-r border-border-light dark:border-gray-800 bg-white dark:bg-background-dark h-full">
         <div className="p-4 border-b border-border-light dark:border-gray-800">
-          <h2 className="text-lg font-semibold text-text-light dark:text-white mb-3 px-1">Offer Threads</h2>
+          <h2 className="text-lg font-semibold text-text-light dark:text-white mb-3 px-1">オファースレッド</h2>
           <div className="relative">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-subtext-light dark:text-subtext-dark">
               <span className="material-symbols-outlined text-lg">search</span>
             </span>
             <input
               className="w-full pl-10 pr-4 py-2 rounded-lg bg-background-light dark:bg-gray-800 border-none text-sm placeholder:text-subtext-light dark:text-white focus:ring-1 focus:ring-primary"
-              placeholder="Search by company"
+              placeholder="企業名で検索"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -256,14 +256,14 @@ const Chat: React.FC = () => {
                       : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
                   }`}
                 >
-                  {thread.status}
+                  {thread.status === 'Accepted' ? '承認済み' : thread.status === 'Rejected' ? '拒否' : '保留中'}
                 </span>
               </div>
             </div>
           ))}
           {filteredThreads.length === 0 && (
             <div className="p-4 text-center text-subtext-light dark:text-subtext-dark text-sm">
-              No threads found
+              スレッドが見つかりませんでした
             </div>
           )}
         </div>
@@ -278,7 +278,7 @@ const Chat: React.FC = () => {
           </div>
           <div className="flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-lg">
             <span className="material-symbols-outlined text-lg">auto_awesome</span>
-            <span className="text-sm font-semibold">Matching Score: {activeThread.matchScore}%</span>
+            <span className="text-sm font-semibold">マッチングスコア: {activeThread.matchScore}%</span>
           </div>
         </header>
 
@@ -326,7 +326,7 @@ const Chat: React.FC = () => {
           {showOfferForm && (
             <div className="border border-border-light dark:border-gray-700 rounded-xl p-4 mb-4 bg-gray-50 dark:bg-gray-800/50">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-text-light dark:text-white">Send Offer</h3>
+                <h3 className="font-semibold text-text-light dark:text-white">オファー送信</h3>
                 <button
                   onClick={() => setShowOfferForm(false)}
                   className="text-subtext-light dark:text-subtext-dark hover:text-text-light dark:hover:text-white"
@@ -337,18 +337,18 @@ const Chat: React.FC = () => {
               <form onSubmit={handleSendOffer}>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">Type</label>
+                    <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">種類</label>
                     <select
                       className="form-select w-full rounded-md border-border-light dark:border-gray-600 bg-white dark:bg-gray-700 text-sm dark:text-white"
                       value={offerForm.type}
                       onChange={(e) => setOfferForm({ ...offerForm, type: e.target.value })}
                     >
-                      <option>Business Alliance</option>
-                      <option>Information Exchange</option>
+                      <option>ビジネス提携</option>
+                      <option>情報交換</option>
                     </select>
                   </div>
                   <div>
-                    <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">Deadline</label>
+                    <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">期限</label>
                     <input
                       type="date"
                       className="form-input w-full rounded-md border-border-light dark:border-gray-600 bg-white dark:bg-gray-700 text-sm dark:text-white"
@@ -358,7 +358,7 @@ const Chat: React.FC = () => {
                   </div>
                 </div>
                 <div className="mb-4">
-                  <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">Related Issue</label>
+                  <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">関連課題</label>
                   <input
                     type="text"
                     readOnly
@@ -367,10 +367,10 @@ const Chat: React.FC = () => {
                   />
                 </div>
                 <div className="mb-4">
-                  <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">Proposal</label>
+                  <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">提案内容</label>
                   <textarea
                     rows={2}
-                    placeholder="Enter proposal details..."
+                    placeholder="提案の詳細を入力..."
                     className="form-textarea w-full rounded-md border-border-light dark:border-gray-600 bg-white dark:bg-gray-700 text-sm dark:text-white"
                     value={offerForm.proposal}
                     onChange={(e) => setOfferForm({ ...offerForm, proposal: e.target.value })}
@@ -383,13 +383,13 @@ const Chat: React.FC = () => {
                     onClick={() => setShowOfferForm(false)}
                     className="px-4 py-2 rounded-lg border border-border-light dark:border-gray-600 text-sm font-medium text-text-light dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Cancel
+                    キャンセル
                   </button>
                   <button
                     type="submit"
                     className="px-4 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90"
                   >
-                    Send Offer
+                    オファー送信
                   </button>
                 </div>
               </form>
@@ -404,13 +404,13 @@ const Chat: React.FC = () => {
                 className="px-3 py-2 rounded-lg border border-border-light dark:border-gray-600 text-sm font-medium text-text-light dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <span className="material-symbols-outlined text-base mr-1">send</span>
-                Send Offer
+                オファー送信
               </button>
             )}
             <form onSubmit={handleSendMessage} className="flex-1 flex items-center gap-2 bg-background-light dark:bg-gray-800 rounded-xl p-2">
               <input
                 type="text"
-                placeholder="Type your message..."
+                placeholder="メッセージを入力..."
                 className="flex-1 bg-transparent border-none focus:ring-0 text-sm text-text-light dark:text-white placeholder:text-subtext-light"
                 value={messageInput}
                 onChange={(e) => setMessageInput(e.target.value)}
