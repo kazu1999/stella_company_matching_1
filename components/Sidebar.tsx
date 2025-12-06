@@ -51,15 +51,8 @@ const Sidebar: React.FC = () => {
               <span class={iconClass(RoutePath.Matching)}>auto_awesome</span>
               <p class="text-sm font-medium leading-normal">Matching (AI)</p>
             </Link>
-            <div class="flex flex-col gap-1">
-               {/* Simplified Offer Group */}
-              <Link to="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
-                 <span class="material-symbols-outlined">move_to_inbox</span>
-                 <p class="text-sm font-medium leading-normal">Offers</p>
-              </Link>
-            </div>
-             <Link to="/companies" class={navItemClass('/companies')}>
-              <span class={iconClass('/companies')}>apartment</span>
+             <Link to={RoutePath.CompanyList} class={navItemClass(RoutePath.CompanyList)}>
+              <span class={iconClass(RoutePath.CompanyList)}>apartment</span>
               <p class="text-sm font-medium leading-normal">Companies</p>
             </Link>
             <Link to={RoutePath.Articles} class={navItemClass(RoutePath.Articles)}>

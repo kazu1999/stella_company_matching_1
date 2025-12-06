@@ -9,6 +9,7 @@ import CompanyDetail from './pages/CompanyDetail';
 import Chat from './pages/Chat';
 import Ranking from './pages/Ranking';
 import Articles from './pages/Articles';
+import Companies from './pages/Companies';
 import { RoutePath } from './types';
 
 const App: React.FC = () => {
@@ -26,8 +27,7 @@ const App: React.FC = () => {
             <Route path={RoutePath.Chat} element={<Chat />} />
             <Route path={RoutePath.Ranking} element={<Ranking />} />
             <Route path={RoutePath.Articles} element={<Articles />} />
-            {/* Fallback routes */}
-            <Route path="/companies" element={<Navigate to={RoutePath.Matching} />} />
+            <Route path={RoutePath.CompanyList} element={<Companies />} />
             <Route path="*" element={<Navigate to={RoutePath.Dashboard} />} />
           </Routes>
         </main>
