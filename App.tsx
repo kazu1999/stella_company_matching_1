@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import AdminSidebar from './components/AdminSidebar';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
@@ -12,15 +13,28 @@ import Chat from './pages/Chat';
 import Ranking from './pages/Ranking';
 import Articles from './pages/Articles';
 import Companies from './pages/Companies';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminCompanies from './pages/admin/AdminCompanies';
+import AdminCompanyDetail from './pages/admin/AdminCompanyDetail';
+import AdminUsers from './pages/admin/AdminUsers';
+import AdminMatching from './pages/admin/AdminMatching';
+import AdminOffers from './pages/admin/AdminOffers';
+import AdminContent from './pages/admin/AdminContent';
 import { RoutePath } from './types';
 
 // 認証が必要なルートを保護するコンポーネント
-const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
+const ProtectedRoute: React.FC<{ children: React.ReactElement; requireAdmin?: boolean }> = ({ 
+  children, 
+  requireAdmin = false 
+}) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated') === 'true';
+    const adminStatus = localStorage.getItem('isAdmin') === 'true';
     setIsAuthenticated(authStatus);
+    setIsAdmin(adminStatus);
   }, []);
 
   if (isAuthenticated === null) {
@@ -36,6 +50,10 @@ const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }
 
   if (!isAuthenticated) {
     return <Navigate to={RoutePath.Login} replace />;
+  }
+
+  if (requireAdmin && !isAdmin) {
+    return <Navigate to={RoutePath.Dashboard} replace />;
   }
 
   return children;
@@ -71,7 +89,31 @@ const App: React.FC = () => {
         <Route path={RoutePath.Login} element={<Login />} />
         <Route path={RoutePath.SignUp} element={<SignUp />} />
         
-        {/* 認証が必要なルート */}
+        {/* 管理者ルート */}
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute requireAdmin={true}>
+              <div className="flex h-screen w-full bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark overflow-hidden">
+                <AdminSidebar />
+                <main className="flex-1 flex flex-col h-full overflow-hidden relative">
+                  <Routes>
+                    <Route path="/" element={<AdminDashboard />} />
+                    <Route path="/companies" element={<AdminCompanies />} />
+                    <Route path="/companies/:id" element={<AdminCompanyDetail />} />
+                    <Route path="/users" element={<AdminUsers />} />
+                    <Route path="/matching" element={<AdminMatching />} />
+                    <Route path="/offers" element={<AdminOffers />} />
+                    <Route path="/content" element={<AdminContent />} />
+                    <Route path="*" element={<Navigate to="/admin" replace />} />
+                  </Routes>
+                </main>
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        
+        {/* 通常ユーザールート */}
         <Route
           path="/*"
           element={

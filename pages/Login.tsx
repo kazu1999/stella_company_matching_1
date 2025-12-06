@@ -23,13 +23,23 @@ const Login: React.FC = () => {
 
     // モック認証（実際のバックエンド実装時は置き換え）
     setTimeout(() => {
+      // 管理者判定
+      const isAdmin = email === 'admin@stella.com' && password === 'stella';
+      
       // ローカルストレージに認証情報を保存
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('userEmail', email);
       localStorage.setItem('userName', email.split('@')[0]);
+      localStorage.setItem('isAdmin', isAdmin ? 'true' : 'false');
       
       setLoading(false);
-      navigate(RoutePath.Dashboard);
+      
+      // 管理者の場合は管理者ダッシュボードへ、それ以外は通常のダッシュボードへ
+      if (isAdmin) {
+        navigate(RoutePath.AdminDashboard);
+      } else {
+        navigate(RoutePath.Dashboard);
+      }
     }, 1000);
   };
 

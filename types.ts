@@ -35,4 +35,12 @@ export enum RoutePath {
   Chat = '/chat',
   Ranking = '/ranking',
   Articles = '/articles',
+  // Admin routes
+  AdminDashboard = '/admin',
+  AdminCompanies = '/admin/companies',
+  AdminCompanyDetail = '/admin/companies/:id',
+  AdminUsers = '/admin/users',
+  AdminMatching = '/admin/matching',
+  AdminOffers = '/admin/offers',
+  AdminContent = '/admin/content',
 }
