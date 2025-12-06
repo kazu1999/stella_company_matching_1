@@ -27,6 +27,7 @@ const Chat: React.FC = () => {
   const [offerForm, setOfferForm] = useState({
     type: 'ビジネス提携',
     deadline: '',
+    relatedIssue: '',
     proposal: '',
   });
   const [showOfferForm, setShowOfferForm] = useState(false);
@@ -172,7 +173,7 @@ const Chat: React.FC = () => {
 
     const offerMessage: Message = {
       id: Date.now().toString(),
-      text: `[OFFER] Type: ${offerForm.type} | Deadline: ${offerForm.deadline || 'Not specified'} | Proposal: ${offerForm.proposal}`,
+      text: `[OFFER] Type: ${offerForm.type} | Related Issue: ${offerForm.relatedIssue || activeThread.relatedIssue} | Deadline: ${offerForm.deadline || '指定なし'} | Proposal: ${offerForm.proposal}`,
       sender: 'me',
       timestamp: new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' }),
       read: false,
@@ -192,7 +193,7 @@ const Chat: React.FC = () => {
       )
     );
 
-    setOfferForm({ type: 'ビジネス提携', deadline: '', proposal: '' });
+    setOfferForm({ type: 'ビジネス提携', deadline: '', relatedIssue: '', proposal: '' });
     setShowOfferForm(false);
     alert('オファーを送信しました！');
   };
@@ -361,9 +362,10 @@ const Chat: React.FC = () => {
                   <label className="text-xs font-medium text-subtext-light dark:text-subtext-dark mb-1 block">関連課題</label>
                   <input
                     type="text"
-                    readOnly
-                    value={activeThread.relatedIssue}
-                    className="form-input w-full rounded-md border-border-light dark:border-gray-600 bg-gray-100 dark:bg-gray-600 text-sm dark:text-gray-300"
+                    placeholder="関連する課題を入力..."
+                    className="form-input w-full rounded-md border-border-light dark:border-gray-600 bg-white dark:bg-gray-700 text-sm dark:text-white"
+                    value={offerForm.relatedIssue || activeThread.relatedIssue}
+                    onChange={(e) => setOfferForm({ ...offerForm, relatedIssue: e.target.value })}
                   />
                 </div>
                 <div className="mb-4">
@@ -400,7 +402,15 @@ const Chat: React.FC = () => {
           <div className="flex items-center gap-2">
             {!showOfferForm && (
               <button
-                onClick={() => setShowOfferForm(true)}
+                onClick={() => {
+                  setOfferForm({
+                    type: 'ビジネス提携',
+                    deadline: '',
+                    relatedIssue: activeThread.relatedIssue,
+                    proposal: '',
+                  });
+                  setShowOfferForm(true);
+                }}
                 className="px-3 py-2 rounded-lg border border-border-light dark:border-gray-600 text-sm font-medium text-text-light dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <span className="material-symbols-outlined text-base mr-1">send</span>
