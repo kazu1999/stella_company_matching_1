@@ -1,9 +1,19 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { RoutePath } from '../types';
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userName');
+    // 認証状態の変更を通知
+    window.dispatchEvent(new Event('authChange'));
+    navigate(RoutePath.Login);
+  };
 
   const isActive = (path: string) => {
     if (path === RoutePath.Dashboard && location.pathname === RoutePath.Dashboard) return true;
@@ -83,10 +93,13 @@ const Sidebar: React.FC = () => {
               <span class="material-symbols-outlined">settings</span>
               <p class="text-sm font-medium leading-normal">Settings</p>
             </Link>
-             <Link to="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
-              <span class="material-symbols-outlined">logout</span>
-              <p class="text-sm font-medium leading-normal">Logout</p>
-            </Link>
+             <button
+              onClick={handleLogout}
+              className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10 w-full text-left"
+            >
+              <span className="material-symbols-outlined">logout</span>
+              <p className="text-sm font-medium leading-normal">Logout</p>
+            </button>
         </div>
       </div>
     </aside>

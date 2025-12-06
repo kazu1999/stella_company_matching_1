@@ -24,6 +24,8 @@ export interface Article {
 }
 
 export enum RoutePath {
+  Login = '/login',
+  SignUp = '/signup',
   Dashboard = '/',
   CompanyProfile = '/profile',
   ArticleGenerator = '/article-generator',

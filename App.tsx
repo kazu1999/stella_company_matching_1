@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import CompanyProfile from './pages/CompanyProfile';
 import ArticleGenerator from './pages/ArticleGenerator';
@@ -12,26 +14,89 @@ import Articles from './pages/Articles';
 import Companies from './pages/Companies';
 import { RoutePath } from './types';
 
+// 認証が必要なルートを保護するコンポーネント
+const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const authStatus = localStorage.getItem('isAuthenticated') === 'true';
+    setIsAuthenticated(authStatus);
+  }, []);
+
+  if (isAuthenticated === null) {
+    // 認証状態を確認中
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <span className="material-symbols-outlined animate-spin text-4xl text-primary">refresh</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to={RoutePath.Login} replace />;
+  }
+
+  return children;
+};
+
 const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const authStatus = localStorage.getItem('isAuthenticated') === 'true';
+      setIsAuthenticated(authStatus);
+    };
+
+    checkAuth();
+    // ストレージの変更を監視
+    window.addEventListener('storage', checkAuth);
+    
+    // カスタムイベントで認証状態の変更を監視
+    const handleAuthChange = () => checkAuth();
+    window.addEventListener('authChange', handleAuthChange);
+
+    return () => {
+      window.removeEventListener('storage', checkAuth);
+      window.removeEventListener('authChange', handleAuthChange);
+    };
+  }, []);
+
   return (
     <Router>
-      <div className="flex h-screen w-full bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark overflow-hidden">
-        <Sidebar />
-        <main className="flex-1 flex flex-col h-full overflow-hidden relative">
-           <Routes>
-            <Route path={RoutePath.Dashboard} element={<Dashboard />} />
-            <Route path={RoutePath.CompanyProfile} element={<CompanyProfile />} />
-            <Route path={RoutePath.ArticleGenerator} element={<ArticleGenerator />} />
-            <Route path={RoutePath.Matching} element={<Matching />} />
-            <Route path={RoutePath.CompanyDetail} element={<CompanyDetail />} />
-            <Route path={RoutePath.Chat} element={<Chat />} />
-            <Route path={RoutePath.Ranking} element={<Ranking />} />
-            <Route path={RoutePath.Articles} element={<Articles />} />
-            <Route path={RoutePath.CompanyList} element={<Companies />} />
-            <Route path="*" element={<Navigate to={RoutePath.Dashboard} />} />
-          </Routes>
-        </main>
-      </div>
+      <Routes>
+        {/* 認証不要なルート */}
+        <Route path={RoutePath.Login} element={<Login />} />
+        <Route path={RoutePath.SignUp} element={<SignUp />} />
+        
+        {/* 認証が必要なルート */}
+        <Route
+          path="/*"
+          element={
+            <ProtectedRoute>
+              <div className="flex h-screen w-full bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark overflow-hidden">
+                <Sidebar />
+                <main className="flex-1 flex flex-col h-full overflow-hidden relative">
+                  <Routes>
+                    <Route path={RoutePath.Dashboard} element={<Dashboard />} />
+                    <Route path={RoutePath.CompanyProfile} element={<CompanyProfile />} />
+                    <Route path={RoutePath.ArticleGenerator} element={<ArticleGenerator />} />
+                    <Route path={RoutePath.Matching} element={<Matching />} />
+                    <Route path={RoutePath.CompanyDetail} element={<CompanyDetail />} />
+                    <Route path={RoutePath.Chat} element={<Chat />} />
+                    <Route path={RoutePath.Ranking} element={<Ranking />} />
+                    <Route path={RoutePath.Articles} element={<Articles />} />
+                    <Route path={RoutePath.CompanyList} element={<Companies />} />
+                    <Route path="*" element={<Navigate to={RoutePath.Dashboard} />} />
+                  </Routes>
+                </main>
+              </div>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </Router>
   );
 };
