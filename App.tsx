@@ -20,6 +20,7 @@ import AdminUsers from './pages/admin/AdminUsers';
 import AdminMatching from './pages/admin/AdminMatching';
 import AdminOffers from './pages/admin/AdminOffers';
 import AdminContent from './pages/admin/AdminContent';
+import NotFound from './pages/NotFound';
 import { RoutePath } from './types';
 
 // 認証が必要なルートを保護するコンポーネント
@@ -105,7 +106,7 @@ const App: React.FC = () => {
                     <Route path="/matching" element={<AdminMatching />} />
                     <Route path="/offers" element={<AdminOffers />} />
                     <Route path="/content" element={<AdminContent />} />
-                    <Route path="*" element={<Navigate to="/admin" replace />} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
               </div>
@@ -131,7 +132,7 @@ const App: React.FC = () => {
                     <Route path={RoutePath.Ranking} element={<Ranking />} />
                     <Route path={RoutePath.Articles} element={<Articles />} />
                     <Route path={RoutePath.CompanyList} element={<Companies />} />
-                    <Route path="*" element={<Navigate to={RoutePath.Dashboard} />} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>
               </div>
