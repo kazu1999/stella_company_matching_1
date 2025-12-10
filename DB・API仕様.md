@@ -419,6 +419,34 @@ Notifications ─── Users
 }
 ```
 
+#### POST /api/companies/register
+自社登録
+
+**リクエストボディ**:
+```json
+{
+  "industry": "SaaS",
+  "strengths": ["技術力が高い", "優秀な人材が揃っている"],
+  "strengthsInput": "AI技術に強みがあり、データ分析のノウハウが豊富",
+  "weaknesses": ["マーケティング力が弱い", "顧客基盤が小さい"],
+  "weaknessesInput": "新規顧客獲得に課題がある",
+  "concerns": {
+    "majorCategory": "marketing",
+    "middleCategory": "lead",
+    "smallCategories": ["新規集客が安定しない", "広告効果が測れない"],
+    "input": "月間リード数を50件以上増やしたい"
+  }
+}
+```
+
+**レスポンス**:
+```json
+{
+  "companyId": "uuid",
+  "message": "企業情報を登録しました"
+}
+```
+
 #### PUT /api/companies/:id/profile
 企業プロフィール更新
 
@@ -458,7 +486,89 @@ Notifications ─── Users
 }
 ```
 
-### 2.3 マッチングAPI
+### 2.3 自社登録・AI分析API
+
+#### GET /api/company/registration
+登録済み自社情報取得
+
+**レスポンス**:
+```json
+{
+  "industry": "SaaS",
+  "strengths": ["技術力が高い", "優秀な人材が揃っている"],
+  "strengthsInput": "AI技術に強みがあり、データ分析のノウハウが豊富",
+  "weaknesses": ["マーケティング力が弱い", "顧客基盤が小さい"],
+  "weaknessesInput": "新規顧客獲得に課題がある",
+  "concerns": {
+    "majorCategory": "marketing",
+    "middleCategory": "lead",
+    "smallCategories": ["新規集客が安定しない", "広告効果が測れない"],
+    "input": "月間リード数を50件以上増やしたい"
+  }
+}
+```
+
+#### POST /api/company/analysis
+AI分析・マッチング実行
+
+**リクエストボディ**:
+```json
+{
+  "companyId": "uuid"
+}
+```
+
+**レスポンス**:
+```json
+{
+  "summary": "企業状況の要約文",
+  "surfaceIssues": [
+    "新規顧客獲得数が目標に達していない",
+    "マーケティング施策の効果が測定できていない"
+  ],
+  "structuralIssues": [
+    "営業とマーケティングの連携が取れていない",
+    "業務フローが標準化されておらず、属人化している"
+  ],
+  "deepIssues": [
+    "顧客価値の提供方法が明確でない",
+    "データドリブンな意思決定文化が根付いていない"
+  ],
+  "solutions": [
+    "マーケティングオートメーションツールの導入と、リード獲得から成約までのフローの最適化"
+  ],
+  "solutionProcesses": [
+    {
+      "solution": "マーケティングオートメーションツールの導入と、リード獲得から成約までのフローの最適化",
+      "steps": [
+        "現状のマーケティング活動とリード獲得プロセスを可視化",
+        "マーケティングオートメーションツール（HubSpot、Marketo等）の選定と導入",
+        "リード獲得から成約までのフローを設計・最適化",
+        "顧客セグメント別のアプローチ戦略を策定",
+        "KPI設定と効果測定の仕組みを構築",
+        "継続的な改善サイクルを確立"
+      ],
+      "timeline": "3-6ヶ月",
+      "priority": "high"
+    }
+  ],
+  "matchedCompanies": [
+    {
+      "id": "uuid",
+      "name": "Marketing Pro",
+      "industry": "マーケティング支援",
+      "logo": "url",
+      "matchScore": 92,
+      "description": "BtoB企業向けマーケティングオートメーションとリード獲得支援を提供",
+      "matchingReason": "新規顧客獲得とマーケティングオートメーションの課題解決に強みがあります",
+      "strengths": ["マーケティングオートメーション", "リード獲得", "コンテンツマーケティング"],
+      "canSolveIssues": ["新規顧客獲得数が目標に達していない", "マーケティング施策の効果が測定できていない"]
+    }
+  ]
+}
+```
+
+### 2.4 マッチングAPI
 
 #### GET /api/matching/recommended
 AI推奨企業取得
@@ -551,7 +661,7 @@ AI推奨企業取得
 }
 ```
 
-### 2.4 オファーAPI
+### 2.5 オファーAPI
 
 #### GET /api/offers
 オファー一覧取得
@@ -638,7 +748,7 @@ AI推奨企業取得
 
 **レスポンス**: CSVファイル
 
-### 2.5 チャットAPI
+### 2.6 チャットAPI
 
 #### GET /api/chat/threads
 チャットスレッド一覧取得
@@ -734,7 +844,7 @@ AI推奨企業取得
 - `page`: ページ番号
 - `limit`: 1ページあたりの件数
 
-### 2.6 記事API
+### 2.7 記事API
 
 #### GET /api/articles
 記事一覧取得
@@ -807,7 +917,7 @@ AI推奨企業取得
 #### DELETE /api/articles/:id
 記事削除
 
-### 2.7 ランキングAPI
+### 2.8 ランキングAPI
 
 #### GET /api/ranking
 企業ランキング取得
@@ -863,7 +973,7 @@ AI推奨企業取得
 #### POST /api/ranking/company/:id/view
 企業閲覧（スコア加算）
 
-### 2.8 ダッシュボードAPI
+### 2.9 ダッシュボードAPI
 
 #### GET /api/dashboard/stats
 ダッシュボード統計取得
@@ -942,7 +1052,7 @@ AI推奨企業取得
 }
 ```
 
-### 2.9 管理者API
+### 2.10 管理者API
 
 #### GET /api/admin/dashboard/stats
 管理者ダッシュボード統計取得
