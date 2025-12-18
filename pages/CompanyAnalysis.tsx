@@ -67,6 +67,43 @@ const CompanyAnalysis: React.FC = () => {
     }
   }, []);
 
+  const callGeminiAPI = async (prompt: string, modelName: string = 'gemini-1.5-flash'): Promise<string> => {
+    // 環境変数からAPIキーを取得（Vite推奨のVITE_プレフィックスを優先）
+    const apiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY ||
+                   (window as any).process?.env?.GEMINI_API_KEY || 
+                   (import.meta as any).env?.GEMINI_API_KEY ||
+                   (process as any).env?.GEMINI_API_KEY;
+    
+    if (!apiKey) {
+      throw new Error('Gemini APIキーが設定されていません。.envまたは.env.localファイルに VITE_GEMINI_API_KEY を設定してください。');
+    }
+
+    // Gemini API v1betaエンドポイントを使用（最新モデル対応のためbeta推奨）
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+    
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: prompt
+          }]
+        }]
+      })
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(`Gemini APIエラー: ${error.error?.message || 'Unknown error'}`);
+    }
+
+    const data = await response.json();
+    return data.candidates[0].content.parts[0].text;
+  };
+
   const handleAnalyze = async () => {
     if (!companyData) {
       alert('企業情報が登録されていません。先に自社登録を行ってください。');
@@ -76,12 +113,111 @@ const CompanyAnalysis: React.FC = () => {
 
     setIsAnalyzing(true);
 
-    // AI分析のシミュレーション（実際の実装ではGemini APIを使用）
-    setTimeout(() => {
+    try {
+      // 企業情報をまとめる
+      const industry = companyData.industry;
+      const strengths = [...companyData.strengths, companyData.strengthsInput].filter(s => s.trim()).join('、');
+      const weaknesses = [...companyData.weaknesses, companyData.weaknessesInput].filter(w => w.trim()).join('、');
+      const concerns = [...companyData.concerns, companyData.concernsInput].filter(c => c.trim()).join('、');
+
+      // Gemini APIに送信するプロンプト
+      const prompt = `あなたは経営コンサルタントです。以下の企業情報を分析して、JSON形式で回答してください。
+
+企業情報:
+- 業種: ${industry}
+- 強み: ${strengths}
+- 弱み: ${weaknesses}
+- 悩み: ${concerns}
+
+以下のJSON形式で回答してください。各項目は配列で、具体的で実用的な内容を3-5個程度記載してください。
+
+{
+  "summary": "企業状況の要約（200文字程度）",
+  "surfaceIssues": ["表層課題1", "表層課題2", "表層課題3"],
+  "structuralIssues": ["構造課題1", "構造課題2", "構造課題3"],
+  "deepIssues": ["深層課題1", "深層課題2", "深層課題3"],
+  "solutions": ["解決提案1", "解決提案2", "解決提案3"],
+  "solutionProcesses": [
+    {
+      "solution": "解決提案のタイトル",
+      "steps": ["ステップ1", "ステップ2", "ステップ3", "ステップ4", "ステップ5", "ステップ6"],
+      "timeline": "3-6ヶ月",
+      "priority": "high"
+    }
+  ]
+}
+
+JSONのみを返答してください。説明文は不要です。`;
+
+      // 複数のモデルを順番に試す（フォールバック）
+      let responseText: string = '';
+      const modelsToTry = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-flash-latest'];
+      let lastError: Error | null = null;
+      let success = false;
+      
+      for (const model of modelsToTry) {
+        try {
+          console.log(`Trying Gemini model: ${model}`);
+          responseText = await callGeminiAPI(prompt, model);
+          console.log(`Successfully used model: ${model}`);
+          success = true;
+          break; // 成功したらループを抜ける
+        } catch (error) {
+          console.warn(`Gemini model ${model} failed:`, error);
+          lastError = error instanceof Error ? error : new Error(String(error));
+          // 最後のモデルでない場合は次のモデルを試す
+          if (model !== modelsToTry[modelsToTry.length - 1]) {
+            continue;
+          }
+        }
+      }
+
+      if (!success) {
+        throw lastError || new Error('All models failed');
+      }
+      
+      // JSONを抽出（マークダウンコードブロックから抽出する場合も考慮）
+      let jsonText = responseText.trim();
+      if (jsonText.includes('```json')) {
+        jsonText = jsonText.split('```json')[1].split('```')[0].trim();
+      } else if (jsonText.includes('```')) {
+        jsonText = jsonText.split('```')[1].split('```')[0].trim();
+      }
+
+      const analysisData = JSON.parse(jsonText);
+
+      // マッチング企業を生成（既存のロジックを使用）
+      const allIssues = [
+        ...analysisData.surfaceIssues,
+        ...analysisData.structuralIssues,
+        ...analysisData.deepIssues
+      ];
+      const matchedCompanies = generateMatchedCompanies(
+        allIssues,
+        companyData.concerns,
+        companyData.weaknesses
+      );
+
+      const result: AnalysisResult = {
+        summary: analysisData.summary,
+        surfaceIssues: analysisData.surfaceIssues || [],
+        structuralIssues: analysisData.structuralIssues || [],
+        deepIssues: analysisData.deepIssues || [],
+        solutions: analysisData.solutions || [],
+        solutionProcesses: analysisData.solutionProcesses || [],
+        matchedCompanies,
+      };
+
+      setAnalysisResult(result);
+    } catch (error) {
+      console.error('AI分析エラー:', error);
+      alert(`AI分析中にエラーが発生しました: ${error instanceof Error ? error.message : 'Unknown error'}\n\nフォールバックとしてモック分析結果を表示します。`);
+      // エラー時はフォールバックとしてモック分析を使用
       const result: AnalysisResult = generateAnalysis(companyData);
       setAnalysisResult(result);
+    } finally {
       setIsAnalyzing(false);
-    }, 3000);
+    }
   };
 
   const generateMatchedCompanies = (
