@@ -1,6 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+interface Announcement {
+  id: number;
+  title: string;
+  content: string;
+  priority: string;
+  date: string;
+}
 
 const Dashboard: React.FC = () => {
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+
+  useEffect(() => {
+    // ローカルストレージからお知らせを取得
+    const loadAnnouncements = () => {
+      const storedAnnouncements = localStorage.getItem('system_announcements');
+      if (storedAnnouncements) {
+        setAnnouncements(JSON.parse(storedAnnouncements));
+      } else {
+        // デフォルトのお知らせ（初回表示用）
+        setAnnouncements([
+          {
+            id: 1,
+            title: '[重要] システムメンテナンスのお知らせ',
+            content: '以下の日程でシステムメンテナンスを実施いたします。メンテナンス中はサービスをご利用いただけません。',
+            priority: 'high',
+            date: '2023年10月26日'
+          },
+          {
+            id: 2,
+            title: '新機能「AI推奨」をリリースしました',
+            content: 'プロフィールと活動履歴に基づいて、AIが最適なマッチング候補を提案する新機能をリリースしました。',
+            priority: 'normal',
+            date: '2023年10月15日'
+          }
+        ]);
+      }
+    };
+
+    loadAnnouncements();
+
+    // ストレージイベントの監視（管理者画面での更新を検知）
+    window.addEventListener('storage', loadAnnouncements);
+    return () => window.removeEventListener('storage', loadAnnouncements);
+  }, []);
+
   return (
     <div className="flex-1 p-8 overflow-y-auto h-full">
       <div className="max-w-6xl mx-auto flex flex-col gap-8">
@@ -54,39 +98,29 @@ const Dashboard: React.FC = () => {
             <h2 className="text-text-light dark:text-text-dark text-lg font-semibold leading-normal">
               お知らせ
             </h2>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-gray-800">
-                <span className="material-symbols-outlined text-primary mt-1">
-                  campaign
-                </span>
-                <div className="flex-1">
-                  <p className="text-sm font-semibold text-text-light dark:text-text-dark">
-                    [重要] システムメンテナンスのお知らせ
-                  </p>
-                  <p className="text-xs text-subtext-light dark:text-subtext-dark mt-1">
-                    2023年10月26日
-                  </p>
-                  <p className="text-sm text-subtext-light dark:text-subtext-dark mt-2">
-                    以下の日程でシステムメンテナンスを実施いたします。メンテナンス中はサービスをご利用いただけません。
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-gray-800">
-                <span className="material-symbols-outlined text-primary mt-1">
-                  celebration
-                </span>
-                <div className="flex-1">
-                  <p className="text-sm font-semibold text-text-light dark:text-text-dark">
-                    新機能「AI推奨」をリリースしました
-                  </p>
-                  <p className="text-xs text-subtext-light dark:text-subtext-dark mt-1">
-                    2023年10月15日
-                  </p>
-                  <p className="text-sm text-subtext-light dark:text-subtext-dark mt-2">
-                    プロフィールと活動履歴に基づいて、AIが最適なマッチング候補を提案する新機能をリリースしました。
-                  </p>
-                </div>
-              </div>
+            <div className="flex flex-col gap-4 max-h-80 overflow-y-auto custom-scrollbar">
+              {announcements.length > 0 ? (
+                announcements.map((announcement) => (
+                  <div key={announcement.id} className="flex items-start gap-4 p-4 rounded-lg bg-background-light dark:bg-gray-800">
+                    <span className={`material-symbols-outlined mt-1 ${announcement.priority === 'high' ? 'text-red-500' : 'text-primary'}`}>
+                      {announcement.priority === 'high' ? 'error' : 'celebration'}
+                    </span>
+                    <div className="flex-1">
+                      <p className="text-sm font-semibold text-text-light dark:text-text-dark">
+                        {announcement.title}
+                      </p>
+                      <p className="text-xs text-subtext-light dark:text-subtext-dark mt-1">
+                        {announcement.date}
+                      </p>
+                      <p className="text-sm text-subtext-light dark:text-subtext-dark mt-2 whitespace-pre-wrap">
+                        {announcement.content}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-subtext-light dark:text-subtext-dark">お知らせはありません</p>
+              )}
             </div>
           </div>
           <div className="flex flex-col gap-4 rounded-xl border border-border-light dark:border-border-dark p-6 bg-white dark:bg-gray-800/50">

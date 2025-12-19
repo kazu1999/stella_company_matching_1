@@ -32,10 +32,10 @@ const Sidebar: React.FC = () => {
     `material-symbols-outlined ${isActive(path) ? 'fill-icon' : ''}`;
 
   return (
-    <aside class="flex w-64 flex-col border-r border-border-light dark:border-border-dark bg-white dark:bg-background-dark p-4 sticky top-0 h-screen overflow-y-auto shrink-0 hidden md:flex">
-      <div class="flex h-full flex-col justify-between">
-        <div class="flex flex-col gap-6">
-          <div class="flex items-center gap-3 px-3 py-2">
+    <aside className="flex w-64 flex-col border-r border-border-light dark:border-border-dark bg-white dark:bg-background-dark p-4 sticky top-0 h-screen overflow-y-auto shrink-0 hidden md:flex">
+      <div className="flex h-full flex-col justify-between">
+        <div className="flex flex-col gap-6">
+          <div className="flex items-center gap-3 px-3 py-2">
             <div
               className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
               style={{
@@ -52,52 +52,48 @@ const Sidebar: React.FC = () => {
               </p>
             </div>
           </div>
-          <nav class="flex flex-col gap-1">
-            <Link to={RoutePath.Dashboard} class={navItemClass(RoutePath.Dashboard)}>
-              <span class={iconClass(RoutePath.Dashboard)}>dashboard</span>
-              <p class="text-sm font-medium leading-normal">ダッシュボード</p>
+          <nav className="flex flex-col gap-1">
+            <Link to={RoutePath.Dashboard} className={navItemClass(RoutePath.Dashboard)}>
+              <span className={iconClass(RoutePath.Dashboard)}>dashboard</span>
+              <p className="text-sm font-medium leading-normal">ダッシュボード</p>
             </Link>
-            <Link to={RoutePath.Matching} class={navItemClass(RoutePath.Matching)}>
-              <span class={iconClass(RoutePath.Matching)}>auto_awesome</span>
-              <p class="text-sm font-medium leading-normal">マッチング (AI)（オリジナル）</p>
+            <Link to={RoutePath.CompanyList} className={navItemClass(RoutePath.CompanyList)}>
+              <span className={iconClass(RoutePath.CompanyList)}>apartment</span>
+              <p className="text-sm font-medium leading-normal">企業一覧</p>
             </Link>
-             <Link to={RoutePath.CompanyList} class={navItemClass(RoutePath.CompanyList)}>
-              <span class={iconClass(RoutePath.CompanyList)}>apartment</span>
-              <p class="text-sm font-medium leading-normal">企業一覧</p>
+            <Link to={RoutePath.Articles} className={navItemClass(RoutePath.Articles)}>
+              <span className={iconClass(RoutePath.Articles)}>article</span>
+              <p className="text-sm font-medium leading-normal">記事 (AI)</p>
             </Link>
-            <Link to={RoutePath.Articles} class={navItemClass(RoutePath.Articles)}>
-              <span class={iconClass(RoutePath.Articles)}>article</span>
-              <p class="text-sm font-medium leading-normal">記事 (AI)</p>
+            <Link to={RoutePath.Chat} className={navItemClass(RoutePath.Chat)}>
+              <span className={iconClass(RoutePath.Chat)}>chat</span>
+              <p className="text-sm font-medium leading-normal">チャット</p>
             </Link>
-            <Link to={RoutePath.Chat} class={navItemClass(RoutePath.Chat)}>
-              <span class={iconClass(RoutePath.Chat)}>chat</span>
-              <p class="text-sm font-medium leading-normal">チャット</p>
+            <Link to={RoutePath.Ranking} className={navItemClass(RoutePath.Ranking)}>
+              <span className={iconClass(RoutePath.Ranking)}>monitoring</span>
+              <p className="text-sm font-medium leading-normal">ランキング</p>
             </Link>
-            <Link to={RoutePath.Ranking} class={navItemClass(RoutePath.Ranking)}>
-               <span class={iconClass(RoutePath.Ranking)}>monitoring</span>
-              <p class="text-sm font-medium leading-normal">ランキング</p>
+            <Link to={RoutePath.ArticleGenerator} className={navItemClass(RoutePath.ArticleGenerator)}>
+              <span className={iconClass(RoutePath.ArticleGenerator)}>edit_document</span>
+              <p className="text-sm font-medium leading-normal">記事生成</p>
             </Link>
-            <Link to={RoutePath.ArticleGenerator} class={navItemClass(RoutePath.ArticleGenerator)}>
-              <span class={iconClass(RoutePath.ArticleGenerator)}>edit_document</span>
-              <p class="text-sm font-medium leading-normal">記事生成</p>
-            </Link>
-            <Link to={RoutePath.CompanyAnalysis} class={navItemClass(RoutePath.CompanyAnalysis)}>
-              <span class={iconClass(RoutePath.CompanyAnalysis)}>psychology</span>
-              <p class="text-sm font-medium leading-normal">AI分析・マッチング</p>
+            <Link to={RoutePath.CompanyAnalysis} className={navItemClass(RoutePath.CompanyAnalysis)}>
+              <span className={iconClass(RoutePath.CompanyAnalysis)}>psychology</span>
+              <p className="text-sm font-medium leading-normal">AI分析・マッチング</p>
             </Link>
           </nav>
         </div>
         
-        <div class="flex flex-col gap-1 border-t border-border-light dark:border-border-dark pt-4">
-             <Link to={RoutePath.CompanyRegistration} class={navItemClass(RoutePath.CompanyRegistration)}>
-              <span class={iconClass(RoutePath.CompanyRegistration)}>add_business</span>
-              <p class="text-sm font-medium leading-normal">自社登録</p>
+        <div className="flex flex-col gap-1 border-t border-border-light dark:border-border-dark pt-4">
+            <Link to={RoutePath.CompanyRegistration} className={navItemClass(RoutePath.CompanyRegistration)}>
+              <span className={iconClass(RoutePath.CompanyRegistration)}>add_business</span>
+              <p className="text-sm font-medium leading-normal">自社登録</p>
             </Link>
-             <Link to={RoutePath.CompanyProfile} class={navItemClass(RoutePath.CompanyProfile)}>
-              <span class={iconClass(RoutePath.CompanyProfile)}>business_center</span>
-              <p class="text-sm font-medium leading-normal">プロフィール</p>
+            <Link to={RoutePath.CompanyProfile} className={navItemClass(RoutePath.CompanyProfile)}>
+              <span className={iconClass(RoutePath.CompanyProfile)}>business_center</span>
+              <p className="text-sm font-medium leading-normal">プロフィール</p>
             </Link>
-             <Link to="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
+            <Link to="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
               <span className="material-symbols-outlined">settings</span>
               <p className="text-sm font-medium leading-normal">設定</p>
             </Link>

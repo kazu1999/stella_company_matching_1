@@ -18,9 +18,34 @@ const AdminCompanyDetail: React.FC = () => {
     id: id || 'innovate',
     name: '株式会社イノベート',
     industry: 'IT / ソフトウェア',
+    founded: '2015年',
+    location: '東京都渋谷区',
+    url: 'https://innovate-inc.jp',
     description: '中小企業向けに特化した業務効率化SaaSの開発と提供。クラウドベースの会計、人事、顧客管理システムを統合し、企業のバックオフィス業務をデジタル化します。',
-    strengths: '直感的なUI/UXデザインと、手厚いカスタマーサポート。導入から運用までを徹底的にサポートし、ITに不慣れな企業でもスムーズなDXを実現します。',
-    issues: '新規顧客獲得のためのマーケティング戦略の立案と実行。特にデジタルマーケティングのノウハウが不足しており、リード獲得に苦戦しています。',
+    strengths: ['UI/UXデザイン', 'カスタマーサポート', 'アジャイル開発', 'データ分析'],
+    weaknesses: ['マーケティング人材不足', '営業組織の未熟さ'],
+    concerns: ['リード獲得', '知名度向上', '採用難'],
+    financials: {
+      revenue: '5.2億円',
+      grossMargin: '68%',
+      operatingProfit: '0.8億円'
+    },
+    // AI分析結果のモック
+    aiAnalysis: {
+      summary: '技術力とプロダクト品質に強みを持つ一方で、マーケティングと営業体制に課題を抱えています。製品力は高いため、販売チャネルの拡大とブランディング強化が成長の鍵となります。',
+      surfaceIssues: ['リード獲得数が目標未達', 'WebサイトからのCVRが低い'],
+      structuralIssues: ['マーケティング専任担当者の不在', '営業と開発の連携不足'],
+      deepIssues: ['技術志向が強く顧客視点が不足', '組織全体での数値目標へのコミット不足'],
+      solutions: ['マーケティングオートメーションの導入', 'アウトサイドセールスの強化', 'ブランディング戦略の再構築'],
+      solutionProcesses: [
+        {
+          solution: 'マーケティングオートメーションの導入',
+          steps: ['現状分析', 'ツール選定', 'シナリオ設計', '運用開始'],
+          timeline: '3ヶ月',
+          priority: 'high'
+        }
+      ]
+    }
   };
 
   return (
@@ -71,71 +96,124 @@ const AdminCompanyDetail: React.FC = () => {
                 <div className="p-6 border-b border-border-light dark:border-border-dark">
                   <h2 className="text-lg font-bold text-text-light dark:text-white">企業情報</h2>
                   <p className="text-subtext-light dark:text-subtext-dark text-sm mt-1">
-                    企業の基本情報と事業内容です。
+                    企業の基本情報、財務データ、および属性タグです。
                   </p>
                 </div>
                 <div className="p-6">
                   <div className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-2">
-                      <div className="md:col-span-1">
-                        <label className="text-sm font-medium text-text-light dark:text-white">企業名</label>
-                      </div>
-                      <div className="md:col-span-2">
+                    {/* 基本情報 */}
+                    <h3 className="text-base font-semibold text-text-light dark:text-white border-b border-border-light dark:border-border-dark pb-2 mb-4">基本情報</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">企業名</label>
                         <input
-                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
                           type="text"
                           defaultValue={company.name}
                         />
                       </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-2">
-                      <div className="md:col-span-1">
-                        <label className="text-sm font-medium text-text-light dark:text-white">業種</label>
-                      </div>
-                      <div className="md:col-span-2">
-                        <select className="form-select w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary">
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">業種</label>
+                        <select className="form-select w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white">
                           <option>IT / ソフトウェア</option>
                           <option>製造業</option>
                           <option>コンサルティング</option>
                         </select>
                       </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-2">
-                      <div className="md:col-span-1">
-                        <label className="text-sm font-medium text-text-light dark:text-white">事業内容</label>
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">所在地</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.location}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">設立年</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.founded}
+                        />
                       </div>
                       <div className="md:col-span-2">
-                        <textarea
-                          className="form-textarea w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary"
-                          rows={4}
-                          defaultValue={company.description}
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">URL</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.url}
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-2">
-                      <div className="md:col-span-1">
-                        <label className="text-sm font-medium text-text-light dark:text-white">自社の強み</label>
+
+                    {/* 事業詳細 */}
+                    <div className="mt-8">
+                      <label className="text-sm font-medium text-text-light dark:text-white block mb-1">事業詳細</label>
+                      <textarea
+                        className="form-textarea w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                        rows={4}
+                        defaultValue={company.description}
+                      />
+                    </div>
+
+                    {/* 財務データ */}
+                    <h3 className="text-base font-semibold text-text-light dark:text-white border-b border-border-light dark:border-border-dark pb-2 mb-4 mt-8">財務データ</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">売上高</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.financials.revenue}
+                        />
                       </div>
-                      <div className="md:col-span-2">
-                        <textarea
-                          className="form-textarea w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary"
-                          rows={4}
-                          defaultValue={company.strengths}
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">粗利率</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.financials.grossMargin}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">営業利益</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.financials.operatingProfit}
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-2">
-                      <div className="md:col-span-1">
-                        <label className="text-sm font-medium text-text-light dark:text-white">解決したい課題</label>
+
+                    {/* タグ情報 */}
+                    <h3 className="text-base font-semibold text-text-light dark:text-white border-b border-border-light dark:border-border-dark pb-2 mb-4 mt-8">属性・タグ</h3>
+                    <div className="grid grid-cols-1 gap-6">
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">強み (カンマ区切り)</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.strengths.join(', ')}
+                        />
                       </div>
-                      <div className="md:col-span-2">
-                        <textarea
-                          className="form-textarea w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white focus:ring-2 focus:ring-primary/50 focus:border-primary"
-                          rows={4}
-                          defaultValue={company.issues}
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">弱み (カンマ区切り)</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.weaknesses.join(', ')}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-sm font-medium text-text-light dark:text-white block mb-1">悩み (カンマ区切り)</label>
+                        <input
+                          className="form-input w-full rounded-lg border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-light dark:text-white"
+                          type="text"
+                          defaultValue={company.concerns.join(', ')}
                         />
                       </div>
                     </div>
+
                   </div>
                 </div>
                 <div className="p-6 border-t border-border-light dark:border-border-dark flex justify-end">
@@ -154,41 +232,75 @@ const AdminCompanyDetail: React.FC = () => {
                   <div className="lg:col-span-2 space-y-6">
                     <div>
                       <h2 className="text-lg font-bold text-text-light dark:text-white mb-1">
-                        AIによる課題抽出と解決策
+                        AI分析レポート
                       </h2>
-                      <p className="text-sm text-subtext-light dark:text-subtext-dark">
-                        AIが企業情報から抽出した潜在的な課題と、その解決策の提案です。
+                      <p className="text-sm text-subtext-light dark:text-subtext-dark mb-4">
+                        {company.aiAnalysis.summary}
                       </p>
                     </div>
-                    <div className="space-y-4">
-                      <div className="p-4 bg-background-light dark:bg-background-dark rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <div className="flex-shrink-0 size-8 flex items-center justify-center bg-primary/10 text-primary rounded-full">
-                            <span className="material-symbols-outlined text-base">lightbulb</span>
-                          </div>
-                          <h3 className="font-bold text-text-light dark:text-white">
-                            課題：デジタルマーケティング人材の不足
-                          </h3>
-                        </div>
-                        <p className="mt-2 ml-11 text-sm text-subtext-light dark:text-subtext-dark">
-                          リード獲得におけるデジタルマーケティングの専門知識を持つ人材が社内に不足しており、効果的な戦略立案が困難な状況です。
-                        </p>
+
+                    <div className="space-y-6">
+                      {/* 表層課題 */}
+                      <div>
+                        <h3 className="text-base font-bold text-text-light dark:text-white mb-2 flex items-center gap-2">
+                           <span className="w-2 h-2 rounded-full bg-orange-400"></span> 表層課題
+                        </h3>
+                        <ul className="list-disc list-inside text-sm text-text-light dark:text-white space-y-1 ml-2">
+                          {company.aiAnalysis.surfaceIssues.map((issue, idx) => (
+                            <li key={idx}>{issue}</li>
+                          ))}
+                        </ul>
                       </div>
-                      <div className="p-4 bg-background-light dark:bg-background-dark rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <div className="flex-shrink-0 size-8 flex items-center justify-center bg-primary/10 text-primary rounded-full">
-                            <span className="material-symbols-outlined text-base">rocket_launch</span>
-                          </div>
-                          <h3 className="font-bold text-text-light dark:text-white">
-                            解決策：専門コンサルティング企業の活用
-                          </h3>
+
+                      {/* 構造課題 */}
+                      <div>
+                        <h3 className="text-base font-bold text-text-light dark:text-white mb-2 flex items-center gap-2">
+                           <span className="w-2 h-2 rounded-full bg-orange-500"></span> 構造課題
+                        </h3>
+                        <ul className="list-disc list-inside text-sm text-text-light dark:text-white space-y-1 ml-2">
+                          {company.aiAnalysis.structuralIssues.map((issue, idx) => (
+                            <li key={idx}>{issue}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* 深層課題 */}
+                      <div>
+                        <h3 className="text-base font-bold text-text-light dark:text-white mb-2 flex items-center gap-2">
+                           <span className="w-2 h-2 rounded-full bg-red-500"></span> 深層課題
+                        </h3>
+                        <ul className="list-disc list-inside text-sm text-text-light dark:text-white space-y-1 ml-2">
+                          {company.aiAnalysis.deepIssues.map((issue, idx) => (
+                            <li key={idx}>{issue}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* 解決提案 */}
+                      <div className="mt-6 pt-6 border-t border-border-light dark:border-border-dark">
+                         <h3 className="text-base font-bold text-text-light dark:text-white mb-4 flex items-center gap-2">
+                           <span className="material-symbols-outlined text-green-500">lightbulb</span> 解決提案
+                        </h3>
+                        <div className="space-y-4">
+                          {company.aiAnalysis.solutionProcesses.map((process, idx) => (
+                             <div key={idx} className="bg-background-light dark:bg-background-dark p-4 rounded-lg">
+                                <div className="flex justify-between items-start mb-2">
+                                  <h4 className="font-bold text-text-light dark:text-white">{process.solution}</h4>
+                                  <span className="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded font-medium">優先度: 高</span>
+                                </div>
+                                <div className="text-sm text-subtext-light dark:text-subtext-dark mb-2">期間: {process.timeline}</div>
+                                <ol className="list-decimal list-inside text-sm text-text-light dark:text-white space-y-1">
+                                  {process.steps.map((step, sIdx) => (
+                                    <li key={sIdx}>{step}</li>
+                                  ))}
+                                </ol>
+                             </div>
+                          ))}
                         </div>
-                        <p className="mt-2 ml-11 text-sm text-subtext-light dark:text-subtext-dark">
-                          Webサイト改善、SEO対策、広告運用までを包括的にサポートできるデジタルマーケティングの専門家との連携を提案します。
-                        </p>
                       </div>
                     </div>
                   </div>
+
                   <div className="lg:col-span-1 space-y-6">
                     <div>
                       <h2 className="text-lg font-bold text-text-light dark:text-white mb-1">おすすめマッチング企業</h2>

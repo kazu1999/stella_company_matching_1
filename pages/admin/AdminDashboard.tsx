@@ -1,12 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const AdminDashboard: React.FC = () => {
+  const [announcement, setAnnouncement] = useState({
+    title: '',
+    content: '',
+    priority: 'normal', // normal, high
+  });
+
+  const handleSendAnnouncement = () => {
+    if (!announcement.title || !announcement.content) {
+      alert('タイトルと本文を入力してください');
+      return;
+    }
+
+    const newAnnouncement = {
+      id: Date.now(),
+      title: announcement.title,
+      content: announcement.content,
+      priority: announcement.priority,
+      date: new Date().toLocaleDateString('ja-JP'),
+    };
+
+    // ローカルストレージに保存（既存のお知らせに追加）
+    const storedAnnouncements = localStorage.getItem('system_announcements');
+    const announcements = storedAnnouncements ? JSON.parse(storedAnnouncements) : [];
+    const updatedAnnouncements = [newAnnouncement, ...announcements];
+    
+    localStorage.setItem('system_announcements', JSON.stringify(updatedAnnouncements));
+
+    alert('お知らせを配信しました');
+    setAnnouncement({ title: '', content: '', priority: 'normal' });
+    
+    // イベントを発火して、別タブなどで開いている場合にも反映できるようにする（簡易的）
+    window.dispatchEvent(new Event('storage'));
+  };
+
+  const chartData = [
+    { name: '1日', count: 12 },
+    { name: '5日', count: 18 },
+    { name: '10日', count: 15 },
+    { name: '15日', count: 25 },
+    { name: '20日', count: 22 },
+    { name: '25日', count: 30 },
+    { name: '30日', count: 28 },
+  ];
+
   return (
     <div className="flex-1 flex flex-col h-full overflow-hidden">
       {/* Header */}
       <header className="flex items-center justify-between gap-4 p-6 bg-white dark:bg-gray-900 border-b border-border-light dark:border-border-dark">
         <p className="text-text-light dark:text-white text-3xl font-black leading-tight tracking-[-0.03em]">
-          Dashboard
+          ダッシュボード
         </p>
         <div className="flex items-center gap-4 flex-1 max-w-xl">
           {/* SearchBar */}
@@ -17,7 +62,7 @@ const AdminDashboard: React.FC = () => {
               </div>
               <input
                 className="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-text-light dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary focus:ring-inset border-y border-r border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark h-full placeholder:text-subtext-light dark:placeholder:text-subtext-dark px-4 text-base font-normal leading-normal"
-                placeholder="Search everything..."
+                placeholder="検索..."
               />
             </div>
           </label>
@@ -105,55 +150,82 @@ const AdminDashboard: React.FC = () => {
                 </h2>
                 <div className="flex gap-1 p-1 rounded-lg bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark">
                   <button className="px-3 py-1 text-sm font-medium rounded-md bg-white dark:bg-gray-900 text-text-light dark:text-white">
-                    Daily
+                    日次
                   </button>
                   <button className="px-3 py-1 text-sm font-medium rounded-md text-subtext-light dark:text-subtext-dark">
-                    Weekly
+                    週次
                   </button>
                 </div>
               </div>
-              <div className="w-full h-80 bg-background-light dark:bg-background-dark rounded-lg flex items-center justify-center">
-                <div
-                  className="bg-center bg-no-repeat aspect-[2.5/1] bg-contain w-full h-full"
-                  style={{
-                    backgroundImage:
-                      "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDT7imKXfCZr-UUc_P77M4kimFOmMlX7iWYRCu8wB9oy123raZATnhtt92ZzBl19PxF6fzMDpW6TiekwmkpNaEEUQbJDKyMmf6DTv6ewbfVZQeYv2rOcuV4mw_ZzLALbmXCiPyuhZAYodWP52RHk21m1xoNFHy9K_3OUJH-NA_BlsNsHkJbEwn9qkgt7aIBSlUp8VRqCisel4siqvoGHFP2eKH_17dylncSC8WuSO_FMupqlPLvYOrvyzsG3RIf4yJH-N1xkf2X2zc')",
-                  }}
-                />
+              <div className="w-full h-80 bg-background-light dark:bg-background-dark rounded-lg flex items-center justify-center p-4">
+                <ResponsiveContainer width="100%" height="100%">
+                  <AreaChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                    <defs>
+                      <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#135bec" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="#135bec" stopOpacity={0}/>
+                      </linearGradient>
+                    </defs>
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#6B7280' }} />
+                    <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#6B7280' }} />
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
+                    <Tooltip 
+                      contentStyle={{ backgroundColor: '#1F2937', border: 'none', borderRadius: '8px', color: '#fff' }}
+                      itemStyle={{ color: '#fff' }}
+                    />
+                    <Area type="monotone" dataKey="count" stroke="#135bec" fillOpacity={1} fill="url(#colorCount)" />
+                  </AreaChart>
+                </ResponsiveContainer>
               </div>
             </div>
           </div>
 
           {/* Right Column */}
           <div className="lg:col-span-1 flex flex-col gap-8">
-            {/* Alerts & Notifications */}
+            {/* Announcement Form */}
             <div className="flex flex-col gap-4 rounded-xl p-6 bg-white dark:bg-gray-900 border border-border-light dark:border-border-dark">
-              <h2 className="text-lg font-bold text-text-light dark:text-white">
-                システムアラート & お知らせ
+              <h2 className="text-lg font-bold text-text-light dark:text-white flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary">campaign</span>
+                お知らせ配信
               </h2>
               <div className="flex flex-col gap-4">
-                <div className="flex items-start gap-4 p-4 rounded-lg bg-red-50 dark:bg-red-900/20">
-                  <div className="flex-shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-red-500">error</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="font-semibold text-red-500">System Alert</p>
-                    <p className="text-sm text-text-light dark:text-white">
-                      データベースの負荷が80%に達しました。パフォーマンス低下の可能性があります。
-                    </p>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-text-light dark:text-white mb-1">タイトル</label>
+                  <input
+                    type="text"
+                    value={announcement.title}
+                    onChange={(e) => setAnnouncement({...announcement, title: e.target.value})}
+                    className="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-gray-800 text-sm px-3 py-2"
+                    placeholder="例: システムメンテナンスのお知らせ"
+                  />
                 </div>
-                <div className="flex items-start gap-4 p-4 rounded-lg bg-blue-50 dark:bg-blue-900/20">
-                  <div className="flex-shrink-0 mt-0.5">
-                    <span className="material-symbols-outlined text-blue-500">campaign</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="font-semibold text-blue-500">Announcement</p>
-                    <p className="text-sm text-text-light dark:text-white">
-                      新しいレポート機能がリリースされました。詳細はドキュメントをご確認ください。
-                    </p>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-text-light dark:text-white mb-1">本文</label>
+                  <textarea
+                    value={announcement.content}
+                    onChange={(e) => setAnnouncement({...announcement, content: e.target.value})}
+                    rows={4}
+                    className="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-gray-800 text-sm px-3 py-2"
+                    placeholder="お知らせの内容を入力してください"
+                  />
                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-text-light dark:text-white mb-1">重要度</label>
+                  <select
+                    value={announcement.priority}
+                    onChange={(e) => setAnnouncement({...announcement, priority: e.target.value})}
+                    className="w-full rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-gray-800 text-sm px-3 py-2"
+                  >
+                    <option value="normal">通常</option>
+                    <option value="high">重要</option>
+                  </select>
+                </div>
+                <button
+                  onClick={handleSendAnnouncement}
+                  className="w-full py-2 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  配信する
+                </button>
               </div>
             </div>
 

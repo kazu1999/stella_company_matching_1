@@ -123,23 +123,12 @@ const CompanyProfile: React.FC = () => {
             </section>
             
             <section className="rounded-xl border border-border-light dark:border-gray-800 bg-white dark:bg-gray-900/50 p-6">
-                <h2 className="text-text-light dark:text-white text-lg font-semibold">事業詳細と課題</h2>
+                <h2 className="text-text-light dark:text-white text-lg font-semibold">事業詳細</h2>
                 <div className="mt-6 flex flex-col gap-6">
                     <label className="flex flex-col">
                         <p className="text-text-light dark:text-text-dark text-sm font-medium pb-2">事業内容</p>
                          <textarea className="form-textarea w-full min-h-32 rounded-lg bg-transparent border border-border-light dark:border-gray-700 p-3 text-sm focus:border-primary focus:ring-0" placeholder="事業、製品、サービスについて詳しく説明してください。"></textarea>
                     </label>
-                    <div>
-                         <p className="text-text-light dark:text-text-dark text-sm font-medium pb-2">現在の課題</p>
-                         <div className="rounded-lg border border-border-light dark:border-gray-700">
-                             <div className="flex flex-nowrap overflow-x-auto border-b border-border-light dark:border-gray-700 p-2 gap-2 custom-scrollbar">
-                                {['新規顧客獲得', 'グローバル展開', '業務効率化', '採用', '資金調達', 'マーケティング'].map(tag => (
-                                     <button key={tag} className="flex-shrink-0 whitespace-nowrap rounded-md bg-slate-100 px-3 py-1.5 text-xs font-medium text-subtext-light hover:bg-slate-200 dark:bg-gray-800 dark:text-subtext-dark dark:hover:bg-gray-700">{tag}</button>
-                                ))}
-                             </div>
-                             <textarea className="form-textarea w-full rounded-b-lg border-0 bg-transparent p-3 text-sm focus:ring-0" placeholder="選択したタグに関連する具体的な課題を説明してください..." rows={4}></textarea>
-                         </div>
-                    </div>
                 </div>
             </section>
 

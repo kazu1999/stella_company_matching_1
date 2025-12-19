@@ -7,7 +7,6 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import CompanyProfile from './pages/CompanyProfile';
 import ArticleGenerator from './pages/ArticleGenerator';
-import Matching from './pages/Matching';
 import CompanyDetail from './pages/CompanyDetail';
 import Chat from './pages/Chat';
 import Ranking from './pages/Ranking';
@@ -18,7 +17,6 @@ import CompanyAnalysis from './pages/CompanyAnalysis';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminCompanies from './pages/admin/AdminCompanies';
 import AdminCompanyDetail from './pages/admin/AdminCompanyDetail';
-import AdminUsers from './pages/admin/AdminUsers';
 import AdminMatching from './pages/admin/AdminMatching';
 import AdminOffers from './pages/admin/AdminOffers';
 import AdminContent from './pages/admin/AdminContent';
@@ -104,7 +102,6 @@ const App: React.FC = () => {
                     <Route path="/" element={<AdminDashboard />} />
                     <Route path="/companies" element={<AdminCompanies />} />
                     <Route path="/companies/:id" element={<AdminCompanyDetail />} />
-                    <Route path="/users" element={<AdminUsers />} />
                     <Route path="/matching" element={<AdminMatching />} />
                     <Route path="/offers" element={<AdminOffers />} />
                     <Route path="/content" element={<AdminContent />} />
@@ -130,7 +127,6 @@ const App: React.FC = () => {
                     <Route path={RoutePath.CompanyRegistration} element={<CompanyRegistration />} />
                     <Route path={RoutePath.CompanyAnalysis} element={<CompanyAnalysis />} />
                     <Route path={RoutePath.ArticleGenerator} element={<ArticleGenerator />} />
-                    <Route path={RoutePath.Matching} element={<Matching />} />
                     <Route path={RoutePath.CompanyDetail} element={<CompanyDetail />} />
                     <Route path={RoutePath.Chat} element={<Chat />} />
                     <Route path={RoutePath.Ranking} element={<Ranking />} />

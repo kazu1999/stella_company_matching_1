@@ -52,27 +52,23 @@ const AdminSidebar: React.FC = () => {
           <nav className="flex flex-col gap-1">
             <Link to="/admin" className={navItemClass('/admin')}>
               <span className={iconClass('/admin')}>dashboard</span>
-              <p className="text-sm font-medium leading-normal">Dashboard</p>
+              <p className="text-sm font-medium leading-normal">ダッシュボード</p>
             </Link>
             <Link to="/admin/companies" className={navItemClass('/admin/companies')}>
               <span className={iconClass('/admin/companies')}>apartment</span>
-              <p className="text-sm font-medium leading-normal">Companies</p>
-            </Link>
-            <Link to="/admin/users" className={navItemClass('/admin/users')}>
-              <span className={iconClass('/admin/users')}>group</span>
-              <p className="text-sm font-medium leading-normal">Users</p>
+              <p className="text-sm font-medium leading-normal">企業管理</p>
             </Link>
             <Link to="/admin/matching" className={navItemClass('/admin/matching')}>
               <span className={iconClass('/admin/matching')}>handshake</span>
-              <p className="text-sm font-medium leading-normal">Matching</p>
+              <p className="text-sm font-medium leading-normal">マッチング管理</p>
             </Link>
             <Link to="/admin/offers" className={navItemClass('/admin/offers')}>
               <span className={iconClass('/admin/offers')}>history</span>
-              <p className="text-sm font-medium leading-normal">Offers</p>
+              <p className="text-sm font-medium leading-normal">オファー管理</p>
             </Link>
             <Link to="/admin/content" className={navItemClass('/admin/content')}>
               <span className={iconClass('/admin/content')}>article</span>
-              <p className="text-sm font-medium leading-normal">Content</p>
+              <p className="text-sm font-medium leading-normal">コンテンツ管理</p>
             </Link>
           </nav>
         </div>
@@ -80,18 +76,18 @@ const AdminSidebar: React.FC = () => {
         <div className="flex flex-col gap-1 border-t border-border-light dark:border-border-dark pt-4">
           <Link to="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
             <span className="material-symbols-outlined">settings</span>
-            <p className="text-sm font-medium leading-normal">Settings</p>
+            <p className="text-sm font-medium leading-normal">設定</p>
           </Link>
           <Link to="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10">
             <span className="material-symbols-outlined">help</span>
-            <p className="text-sm font-medium leading-normal">Help</p>
+            <p className="text-sm font-medium leading-normal">ヘルプ</p>
           </Link>
           <button
             onClick={handleLogout}
             className="flex items-center gap-3 px-3 py-2 rounded-lg text-subtext-light dark:text-subtext-dark hover:bg-gray-100 dark:hover:bg-white/10 w-full text-left"
           >
             <span className="material-symbols-outlined">logout</span>
-            <p className="text-sm font-medium leading-normal">Logout</p>
+            <p className="text-sm font-medium leading-normal">ログアウト</p>
           </button>
         </div>
       </div>
